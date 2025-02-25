@@ -238,7 +238,7 @@ const Register = () => {
       country: "",
       continent: "",
     },
-    categories: [] as string[] || null,
+    categories: [] as string[],
   };
 
   const [formData, setFormData] = useState(initialFormData);

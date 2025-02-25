@@ -1,7 +1,6 @@
 import StylizedNav from "@/components/homepage/Navbar";
 import Socials from "@/components/Socials";
 import AboutusLayout from "@/layouts/aboutusLayout";
-import { SocialIcon } from "react-social-icons";
 
 const Aboutus = () => {
   return (

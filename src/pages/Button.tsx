@@ -4,7 +4,7 @@ interface BtnProps {
   redirectTo: string; // The URL or path to redirect to
 }
 
-const Btn: React.FC<BtnProps> = ({ text, redirectTo }) => {
+const Btn: React.FC<BtnProps> = ({ text }) => {
   return (
     // <Link href={redirectTo} className="relative group
     //       whitespace-nowrap

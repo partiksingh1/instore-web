@@ -39,7 +39,7 @@ const WandDCountryCategoryPage = () => {
   const [stores, setStores] = useState<Store[]>([]);
   const encodedCountry = encodeURIComponent(country || '');
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const [error] = useState<string | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
   const pageSize = 50; // Set the number of items per page

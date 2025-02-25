@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import StylizedNav from "@/components/homepage/Navbar";
-import { SocialIcon } from "react-social-icons";
 import AdsSection from "@/components/homepage/AdsSection";
 import InstoreVideoLayout from "@/layouts/instore-videoLayout";
 import Socials from '@/components/Socials';

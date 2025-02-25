@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 
 const StylizedNav: React.FC = () => {
-  const [navItems, setNavItems] = useState<{ label: string; path: string }[]>([
+  const [navItems] = useState<{ label: string; path: string }[]>([
     { label: "STORES", path: "/stores" },
     { label: "WHOLESALERS & DISTRIBUTORS", path: "/WandD" },
     { label: "STORE WINDOW", path: "/store-window" },

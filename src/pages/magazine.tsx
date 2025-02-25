@@ -1,7 +1,5 @@
 import MagazineLayout from '@/layouts/magazineLayout';
 import React from 'react';
-// import Flipbook from './Flipbook';
-import { SocialIcon } from 'react-social-icons';
 import StylizedNav from '@/components/homepage/Navbar';
 import AdsSection from '@/components/homepage/AdsSection';
 import Socials from '@/components/Socials';

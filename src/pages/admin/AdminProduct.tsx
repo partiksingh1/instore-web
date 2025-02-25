@@ -11,7 +11,7 @@ const AdminProductPage: React.FC = () => {
   const [selectedCategoryName, setSelectedCategoryName] = useState<string | null>(null);
 
   const [productName, setProductName] = useState<string>("");
-  const [categoryId, setCategoryId] = useState<number | null>(null);
+  const [, setCategoryId] = useState<number | null>(null);
 
   // Fetch categories on page load
   useEffect(() => {

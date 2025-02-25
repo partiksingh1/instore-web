@@ -1,6 +1,5 @@
 import StylizedNav from "@/components/homepage/Navbar";
 import AdsSection from "@/components/homepage/AdsSection";
-import { SocialIcon } from 'react-social-icons';
 import WwsLayout from "@/layouts/work-with-usLayout";
 import Socials from "@/components/Socials";
 

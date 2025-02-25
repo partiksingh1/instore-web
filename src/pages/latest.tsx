@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import  { useState, useEffect } from "react";
 import StylizedNav from "@/components/homepage/Navbar";
 import AdsSection from "@/components/homepage/AdsSection";
-import { SocialIcon } from 'react-social-icons';
 import LatestLayout from "@/layouts/latestLayout";
 import axios from "axios";
 import Socials from "@/components/Socials";

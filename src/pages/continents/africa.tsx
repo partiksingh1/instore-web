@@ -2,7 +2,6 @@ import { Button } from "@/components/ui/button";
 import { motion } from 'framer-motion';
 import StylizedNav from "@/components/homepage/Navbar";
 import AdsSection from "@/components/homepage/AdsSection";
-import { SocialIcon } from 'react-social-icons';
 import StoresLayout from "@/layouts/storesLayout";
 import { useNavigate, useParams } from 'react-router-dom';
 import Socials from "@/components/Socials";
