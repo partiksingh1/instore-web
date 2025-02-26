@@ -1,5 +1,4 @@
-import { Pause } from "lucide-react";
-import React, { useRef, useState } from "react";
+import  { useRef, useState } from "react";
 
 const VideoSection = () => {
   // Create a reference to the video element
