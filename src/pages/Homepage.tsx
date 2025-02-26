@@ -42,7 +42,7 @@ const HomePage = () => {
       </div>
 
       {/* Main container with responsive padding */}
-      <div className="border-8 md:border-[18px] border-blue-700 m-2 md:m-4 p-4 md:p-8 relative rounded-lg">
+      <div className="border-8 md:border-[18px] border-blue-700 m-2 md:m-4 p-2 md:p-4 relative rounded-lg">
 
         {/* Rest of your existing components */}
         <div className="flex flex-col md:flex-row md:justify-evenly md:items-center pb-6 md:space-y-0 space-y-4">
@@ -84,7 +84,7 @@ const HomePage = () => {
 
         {/* Hero Content */}
         <div className="text-center md:py-12">
-          <h1 className="text-2xl md:text-3xl lg:text-4xl font-extrabold mb-4 md:mb-6  px-2 md:px-4">
+          <h1 className="text-2xl md:text-2xl lg:text-3xl font-extrabold mb-4 md:mb-6">
             B2B & B2B2C MEDIA AND MARKETING SUPPORT FOR THE TECH, MOBILE PHONE,
             <br className="hidden md:block  px-2 md:px-4" />
             VIDEO GAMING AND TCG TRADE & RETAIL COMMUNITIES
@@ -92,7 +92,7 @@ const HomePage = () => {
           <div className="my-4 md:my-8">
             <VideoSection />
           </div>
-          <p className="text-lg md:text-2xl lg:text-4xl font-extrabold mt-8 md:mt-8">
+          <p className="text-lg md:text-2xl lg:text-3xl font-extrabold mt-8 md:mt-8">
             A DATABASE AND DIRECTORY CONTAINING OVER 150,000 STORES AND IN EXCESS OF 5,000 WHOLESALERS & DISTRIBUTORS WORLDWIDE
           </p>
         </div>

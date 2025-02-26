@@ -2,9 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
+import { Home } from "lucide-react";
 
 const StylizedNav: React.FC = () => {
-  const [navItems] = useState<{ label: string; path: string }[]>([
+  const [navItems] = useState<{ label: JSX.Element | string; path: string }[]>([
+    { label: <Home size={24} />, path: "/" },
+    { label: "LATEST", path: "/latest" },
     { label: "STORES", path: "/stores" },
     { label: "WHOLESALERS & DISTRIBUTORS", path: "/WandD" },
     { label: "STORE WINDOW", path: "/store-window" },
@@ -13,7 +16,6 @@ const StylizedNav: React.FC = () => {
     { label: "IN-STORE VIDEO", path: "/instore-video" },
     { label: "POSTERS", path: "/posters" },
     { label: "PODCAST", path: "/podcast" },
-    { label: "LATEST", path: "/latest" },
     { label: "ABOUT US", path: "/aboutus" },
     { label: "WORK WITH US", path: "/work-with-us" },
     { label: "CONTACT", path: "/contact" },
@@ -53,9 +55,9 @@ const StylizedNav: React.FC = () => {
     <nav className="p-2">
       <div className="flex flex-wrap justify-center gap-2">
         {/* Render static items */}
-        {[ ...dynamicItems,...navItems].map((item, index) => (
+        {[...navItems.slice(0, 2), ...dynamicItems, ...navItems.slice(2)].map((item, index) => (
           <motion.div
-            key={item.label}
+            key={item.path}
             onHoverStart={() => setHoveredItem(index)}
             onHoverEnd={() => setHoveredItem(null)}
             className="relative"
