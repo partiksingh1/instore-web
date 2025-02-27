@@ -6,7 +6,7 @@ import { Home } from "lucide-react";
 
 const StylizedNav: React.FC = () => {
   const [navItems] = useState<{ label: JSX.Element | string; path: string }[]>([
-    { label: <Home size={24} />, path: "/" },
+    { label: <Home className='text-red-500'/>, path: "/" },
     { label: "LATEST", path: "/latest" },
     { label: "STORES", path: "/stores" },
     { label: "WHOLESALERS & DISTRIBUTORS", path: "/WandD" },

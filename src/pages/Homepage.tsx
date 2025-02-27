@@ -21,7 +21,7 @@ const HomePage = () => {
   const redirect = (state: string | null) => {
     if (state) {
       // Only navigate if `state` is a valid string
-      navigate(`/country/${state}`);
+      navigate(`/stores`);
     } else {
       console.warn("Invalid country code: state is null");
     }
