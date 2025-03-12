@@ -1,10 +1,13 @@
+import { Suspense, lazy } from 'react';
 import { SocialIcon } from 'react-social-icons';
-import SpotlightSection from '@/components/homepage/SpotlightSection';
-import StylizedNav from '@/components/homepage/Navbar';
-import AdsSection from '@/components/homepage/AdsSection';
-import VideoSection from '@/components/homepage/VideoSection';
-import Footer from '@/components/Footer';
-import LatestSection from '@/components/homepage/LatestSection';
+
+// Lazy load components
+const SpotlightSection = lazy(() => import('@/components/homepage/SpotlightSection'));
+const StylizedNav = lazy(() => import('@/components/homepage/Navbar'));
+const AdsSection = lazy(() => import('@/components/homepage/AdsSection'));
+const VideoSection = lazy(() => import('@/components/homepage/VideoSection'));
+const Footer = lazy(() => import('@/components/Footer'));
+const LatestSection = lazy(() => import('@/components/homepage/LatestSection'));
 
 const HomePage = () => {
   return (
@@ -24,36 +27,23 @@ const HomePage = () => {
 
       {/* Main container with responsive padding */}
       <div className="border-8 md:border-[18px] border-blue-700 m-2 md:m-4 p-2 md:p-4 relative rounded-lg">
-      <div className="w-full p-2 m-2">
-  {/* Use flex to make them align in a single row */}
-  <div className="flex flex-row space-x-2">
-    {/* First Ads Section */}
-    <div className="flex-1 m-1">
-      <AdsSection numOfAds={1} />
-    </div>
-    
-    {/* Second Ads Section */}
-    <div className="flex-1 m-1">
-      <AdsSection numOfAds={1} />
-    </div>
-    <div className="flex-1 m-1">
-      <AdsSection numOfAds={1} />
-    </div>
-    <div className="flex-1 m-1">
-      <AdsSection numOfAds={1} />
-    </div>
-    <div className="flex-1 m-1">
-      <AdsSection numOfAds={1} />
-    </div>
-  </div>
-</div>
-
-
+        <div className="w-full p-2 m-2">
+          {/* Use flex to make them align in a single row */}
+          <div className="flex flex-row space-x-2">
+            {/* Ads Section (Lazy Load Ads Section Components) */}
+            {[...Array(5)].map((_, index) => (
+              <div key={index} className="flex-1 m-1">
+                <Suspense fallback={<div>Loading Ads...</div>}>
+                  <AdsSection numOfAds={1} />
+                </Suspense>
+              </div>
+            ))}
+          </div>
+        </div>
 
         <div className="flex">
           {/* Main Content Section on the right side (3/4 width) */}
           <div className="w-3/4">
-
             {/* Rest of your existing components */}
             <div className="flex flex-col md:flex-row md:justify-evenly md:items-center pb-6 md:space-y-0 space-y-4">
               {/* Logo 1 */}
@@ -89,90 +79,81 @@ const HomePage = () => {
               </div>
             </div>
 
-            <StylizedNav />
+            <Suspense fallback={<div>Loading Navbar...</div>}>
+              <StylizedNav />
+            </Suspense>
 
             {/* Flex container for Latest Section and Hero Content */}
-            <div className="flex flex-col md:flex-row md:justify-between md:space-x-8">
-
+            <div className="flex flex-col md:flex-row md:justify-between items-center md:items-start space-x-0">
               {/* Left: Latest Section */}
-              <div className="w-full md:w-1/2">
-                <LatestSection />
+              <div className="w-full md:w-2/5 flex justify-end items-center">
+                <div className="flex justify-center items-center w-full">
+                  <Suspense fallback={<div>Loading Latest Section...</div>}>
+                    <LatestSection numOfNews={2} />
+                  </Suspense>
+                </div>
               </div>
 
               {/* Right: Hero Content */}
-              <div className="w-full md:w-1/2 text-center md:text-left md:py-12">
-                {/* Background for <h1> */}
-                <div
-                  className="relative bg-cover bg-center mb-4 md:mb-6"
-                  style={{ backgroundImage: 'url(map1.png)' }}
-                >
-                  {/* Overlay */}
-                  <div className="absolute inset-0 bg-white opacity-80"></div>
+              <div className="w-full justify-start items-center flex flex-col text-center md:text-left md:py-12 p-4">
+                <div className="flex flex-col justify-start items-center w-full">
+                  <div
+                    className="relative bg-cover bg-center mb-4 md:mb-6"
+                    style={{ backgroundImage: 'url(map1.png)' }}
+                  >
+                    <div className="absolute inset-0 bg-white opacity-80"></div>
+                    <h1 className="text-xl md:text-xl lg:text-2xl font-extrabold text-center mb-1 relative z-10">
+                      B2B & B2B2C MEDIA AND MARKETING SUPPORT FOR THE INDEPENDENT TECH, MOBILE PHONE,
+                      <br className="hidden md:block px-2 md:px-4" />
+                      VIDEO GAMING AND TCG TRADE & RETAIL COMMUNITIES
+                    </h1>
+                  </div>
 
-                  <h1 className="text-xl md:text-xl lg:text-xl font-extrabold text-center mb-4 md:mb-6 relative z-10">
-                    B2B & B2B2C MEDIA AND MARKETING SUPPORT FOR THE INDEPENDENT TECH, MOBILE PHONE,
-                    <br className="hidden md:block px-2 md:px-4" />
-                    VIDEO GAMING AND TCG TRADE & RETAIL COMMUNITIES
-                  </h1>
-                </div>
+                  <Suspense fallback={<div>Loading Video...</div>}>
+                    <VideoSection />
+                  </Suspense>
 
-                <VideoSection />
-
-                {/* Background for <p> */}
-                <div
-                  className="relative bg-cover bg-white mt-8 md:mt-4"
-                  style={{ backgroundImage: 'url(map1.png)' }}
-                >
-                  {/* Overlay */}
-                  <div className="absolute inset-0 bg-white opacity-80"></div>
-
-                  <p className="text-xl md:text-xl lg:text-xl text-center font-extrabold relative z-10">
-                    A DATABASE AND DIRECTORY CONTAINING OVER 150,000 STORES AND IN EXCESS OF 5,000 WHOLESALERS & DISTRIBUTORS WORLDWIDE
-                  </p>
+                  <div
+                    className="relative bg-cover bg-white mt-8 md:mt-4"
+                    style={{ backgroundImage: 'url(map1.png)' }}
+                  >
+                    <div className="absolute inset-0 bg-white opacity-80"></div>
+                    <p className="text-xl md:text-xl lg:text-2xl text-center font-extrabold relative z-10">
+                      A DATABASE AND DIRECTORY CONTAINING OVER 150,000 STORES AND IN EXCESS OF 5,000 WHOLESALERS & DISTRIBUTORS WORLDWIDE
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
+
             <div className="m-6">
-              <SpotlightSection />
+              <Suspense fallback={<div>Loading Spotlight...</div>}>
+                <SpotlightSection />
+              </Suspense>
             </div>
+
             <div className="md:py-6">
-              <StylizedNav />
+              <Suspense fallback={<div>Loading Navbar...</div>}>
+                <StylizedNav />
+              </Suspense>
             </div>
           </div>
+
           {/* Ads Section on the left side (1/4 width) */}
           <div className="w-1/4 p-2 m-2">
-            <div className='m-1'>
-              <AdsSection numOfAds={1} />
-            </div>
-            <div className='m-1'>
-              <AdsSection numOfAds={1} />
-            </div>
-            <div className='m-1'>
-              <AdsSection numOfAds={1} />
-            </div>
-            <div className='m-1'>
-              <AdsSection numOfAds={1} />
-            </div>
-            <div className='m-1'>
-              <AdsSection numOfAds={1} />
-            </div>
-            <div className='m-1'>
-              <AdsSection numOfAds={1} />
-            </div>
-            <div className='m-1'>
-              <AdsSection numOfAds={1} />
-            </div>
-            <div className='m-1'>
-              <AdsSection numOfAds={1} />
-            </div>
-            <div className='m-1'>
-              <AdsSection numOfAds={1} />
-            </div>
+            {[...Array(9)].map((_, index) => (
+              <div key={index} className="m-1">
+                <Suspense fallback={<div>Loading Ads...</div>}>
+                  <AdsSection numOfAds={1} />
+                </Suspense>
+              </div>
+            ))}
           </div>
         </div>
 
-
-        <Footer />
+        <Suspense fallback={<div>Loading Footer...</div>}>
+          <Footer />
+        </Suspense>
       </div>
     </div>
   );

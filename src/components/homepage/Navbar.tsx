@@ -62,63 +62,64 @@ const StylizedNav: React.FC = () => {
             onHoverEnd={() => setHoveredItem(null)}
             className="relative"
           >
-            <Button
-              variant="ghost"
-              onClick={() => handleNavClick(item.path)} 
-              className={`
-                relative group 
-                whitespace-nowrap 
-                bg-gradient-to-r from-blue-600 to-blue-400
-                hover:from-blue-700 hover:to-blue-500
-                rounded-lg px-6 py-1
-                transition-all duration-300
-                ${hoveredItem === index ? 'scale-105' : ''}
-              `}
-            >
-              {/* Animated background grid */}
-              <div className="absolute inset-0 bg-grid opacity-10 rounded-lg overflow-hidden animate-grid-flow"></div>
-              
-              {/* Glow effect */}
-              <div className="absolute inset-0 bg-blue-400/20 rounded-lg blur-sm group-hover:blur-md transition-all"></div>
+<Button
+  variant="ghost"
+  onClick={() => handleNavClick(item.path)} 
+  className={`
+    relative group 
+    whitespace-nowrap 
+    bg-gradient-to-r from-blue-600 to-blue-400
+    hover:from-blue-700 hover:to-blue-500 px-6 py-1
+    transition-all duration-300
+    ${hoveredItem === index ? 'scale-105' : ''}
+    rounded-none  /* Ensure no rounding of the button */
+  `}
+>
+  {/* Animated background grid */}
+  <div className="absolute inset-0 bg-grid opacity-10 overflow-hidden animate-grid-flow"></div>
+  
+  {/* Glow effect */}
+  <div className="absolute inset-0 bg-blue-400/20 blur-sm group-hover:blur-md transition-all"></div>
 
-              {/* Vertical bars */}
-              <span className="absolute left-0 top-1/2 -translate-y-1/2 w-0.5 h-2/3 bg-white/30 group-hover:h-full transition-all duration-300"></span>
-              <span className="absolute right-0 top-1/2 -translate-y-1/2 w-0.5 h-2/3 bg-white/30 group-hover:h-full transition-all duration-300"></span>
+  {/* Vertical bars */}
+  <span className="absolute left-0 top-1/2 -translate-y-1/2 w-0.5 h-2/3 bg-white/30 group-hover:h-full transition-all duration-300"></span>
+  <span className="absolute right-0 top-1/2 -translate-y-1/2 w-0.5 h-2/3 bg-white/30 group-hover:h-full transition-all duration-300"></span>
 
-              {/* Top light */}
-              <motion.span
-                className="absolute -top-1 left-1/2 -translate-x-1/2 w-1 h-1 bg-white rounded-full opacity-0 group-hover:opacity-100"
-                animate={hoveredItem === index ? { scale: [1, 1.5, 1] } : {}}
-                transition={{ duration: 1, repeat: Infinity }}
-              ></motion.span>
+  {/* Top light */}
+  <motion.span
+    className="absolute -top-1 left-1/2 -translate-x-1/2 w-1 h-1 bg-white opacity-0 group-hover:opacity-100"
+    animate={hoveredItem === index ? { scale: [1, 1.5, 1] } : {}}
+    transition={{ duration: 1, repeat: Infinity }}
+  ></motion.span>
 
-              {/* Bottom light */}
-              <motion.span
-                className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 bg-white rounded-full opacity-0 group-hover:opacity-100"
-                animate={hoveredItem === index ? { scale: [1, 1.5, 1] } : {}}
-                transition={{ duration: 1, repeat: Infinity }}
-              ></motion.span>
+  {/* Bottom light */}
+  <motion.span
+    className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 bg-white  opacity-0 group-hover:opacity-100"
+    animate={hoveredItem === index ? { scale: [1, 1.5, 1] } : {}}
+    transition={{ duration: 1, repeat: Infinity }}
+  ></motion.span>
 
-              {/* Text */}
-              <span className="relative text-xl font-bold text-white" style={{
-                textShadow: `-1px -1px 0 #000,
-                            1px -1px 0 #000,
-                            -1px 1px 0 #000,
-                            1px 1px 0 #000`
-              }}>
-                {item.label}
-                <motion.span
-                  className="absolute inset-0 text-blue-200 opacity-0 filter blur-sm"
-                  animate={hoveredItem === index ? { opacity: 0.5 } : {}}
-                >
-                  {item.label}
-                </motion.span>
-              </span>
-            </Button>
+  {/* Text */}
+  <span className="relative text-xl font-bold text-white" style={{
+    textShadow: `-1px -1px 0 #000,
+                1px -1px 0 #000,
+                -1px 1px 0 #000,
+                1px 1px 0 #000`
+  }}>
+    {item.label}
+    <motion.span
+      className="absolute inset-0 text-blue-200 opacity-0 filter blur-sm"
+      animate={hoveredItem === index ? { opacity: 0.5 } : {}}
+    >
+      {item.label}
+    </motion.span>
+  </span>
+</Button>
+
 
             {/* Hover indicator */}
             <motion.div
-              className="absolute -bottom-1 left-0 right-0 h-0.5 bg-white/50 rounded-full"
+              className="absolute -bottom-1 left-0 right-0 h-0.5 bg-white/50"
               initial={{ scaleX: 0 }}
               animate={{ scaleX: hoveredItem === index ? 1 : 0 }}
               transition={{ duration: 0.2 }}
