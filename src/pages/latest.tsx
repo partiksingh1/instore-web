@@ -67,7 +67,7 @@ const Latest = () => {
 
         {/* Ads Section */}
         <div className="mt-24">
-        <AdsSection numOfAds={3} />
+            <AdsSection numOfAds={3} />
         </div>
       </div>
     </LatestLayout>

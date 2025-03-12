@@ -24,7 +24,7 @@ const LatestSection: React.FC = () => {
   return (
     <section id="ads-section" className="border-black rounded-lg">
       {/* Newsletters Section with Background Images */}
-      <div className="relative w-full max-w-8xl mt-6 mb-12 text-center p-6">
+      <div className="relative w-full max-w-8xl mt-6 text-center p-6">
         {loading ? (
           <div className="text-center text-xl">Loading newsletters...</div>
         ) : (
@@ -36,17 +36,17 @@ const LatestSection: React.FC = () => {
                   alt={newsletter.subject}
                   className="w-full h-48 sm:h-56 md:h-48 lg:h-48 object-cover border-2 border-black"
                 />
-                <div className="p-2 mt-2 border-2 border-black bg-white">
-                  <h3 className="text-lg sm:text-xl font-semibold mb-2">{newsletter.subject}</h3>
-                  <p className="text-sm sm:text-base text-gray-700 mb-4">{newsletter.content}</p>
-                  <a
+                <div className="mt-2 border-2 border-black bg-white">
+                  <h3 className="text-lg sm:text-xl font-semibold">{newsletter.subject}</h3>
+                  <p className="text-sm sm:text-base text-gray-700">{newsletter.content}</p>
+                  {/* <a
                     href={newsletter.link}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-blue-500 hover:underline"
                   >
                     VIEW MORE
-                  </a>
+                  </a> */}
                 </div>
               </div>
             ))}

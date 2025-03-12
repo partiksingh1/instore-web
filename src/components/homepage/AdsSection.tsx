@@ -15,11 +15,10 @@ interface AdsSectionProps {
 }
 
 const AdCard: React.FC<Ad> = ({ imageUrl }) => (
-  <div className="flex items-center justify-center h-full">
+  <div className="flex flex-col justify-evenly">
     <img
       src={imageUrl}
-      alt={"ad"}
-      className="w-3/4 h-full object-cover border-8 border-black"
+      className="w-full h-full object-cover border-4 border-black"
     />
   </div>
 );
@@ -44,13 +43,16 @@ const AdsSection: React.FC<AdsSectionProps> = ({ numOfAds }) => {
     fetchAds();
   }, []);
 
+  // Dynamically set the grid layout based on number of ads
+  const gridClasses = numOfAds === 1 ? "grid-cols-1" : "sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6";
+
   return (
     <section id="ads-section" className="border-black rounded-lg">
-      <div className="max-w-7xl mx-auto text-center">
+      <div className="w-full mx-auto text-center">
         {loading ? (
           <p>Loading ads...</p>  // Display loading message while fetching ads
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-4">
+          <div className={`w-full grid ${gridClasses} gap-2 justify-evenly items-center`}>
             {ads.slice(0, numOfAds).map((ad) => (  // Use the numOfAds prop to determine how many ads to show
               <AdCard
                 key={ad.id}
@@ -60,13 +62,6 @@ const AdsSection: React.FC<AdsSectionProps> = ({ numOfAds }) => {
             ))}
           </div>
         )}
-
-        {/* MORE Button (optional) */}
-        <div className="mt-6 text-right">
-          {/* <button className="px-8 py-3 bg-red-700 text-white text-lg font-semibold rounded-md shadow-md hover:bg-blue-700 transition-colors">
-            MORE
-          </button> */}
-        </div>
       </div>
     </section>
   );

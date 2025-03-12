@@ -38,7 +38,7 @@ const SpotlightSection = ({ borderFrame = "/border.svg" }) => {
         className="absolute inset-0 w-full h-full z-10 pointer-events-none scale-[1.6] hidden md:block"
       />
 
-      <section className="p-8 relative overflow-hidden border-[20px] border-red-500 md:border-0">
+      <section className="relative overflow-hidden border-[20px] border-red-500 md:border-0 rounded-lg">
         {/* SpotlightSection content */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 left-0 w-64 h-64 bg-red-600 rounded-full blur-3xl" />
