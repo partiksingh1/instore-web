@@ -134,7 +134,7 @@ const Africa = () => {
         </div>
       </div>
     </div>
-    <AdsSection/>
+    <AdsSection numOfAds={3}/>
 
     </StoresLayout>
   );
