@@ -3,19 +3,10 @@ import SpotlightSection from '@/components/homepage/SpotlightSection';
 import StylizedNav from '@/components/homepage/Navbar';
 import AdsSection from '@/components/homepage/AdsSection';
 import VideoSection from '@/components/homepage/VideoSection';
-import World from "@react-map/world";
 import Footer from '@/components/Footer';
-import { useEffect, useState } from 'react';
 import LatestSection from '@/components/homepage/LatestSection';
 
 const HomePage = () => {
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  useEffect(() => {
-    const handleResize = () => setWindowWidth(window.innerWidth);
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-  const worldSize = windowWidth < 640 ? 350 : 800;
   return (
     <div className="min-h-screen relative overflow-hidden">
       <div
@@ -69,40 +60,63 @@ const HomePage = () => {
           </div>
         </div>
 
-
         <StylizedNav />
-                {/* <InteractiveMap /> */}
-                <div className="flex flex-col justify-center items-center">
-          <World
-            size={worldSize}
-            type='select-multiple'
-            disableHover
-            disableClick
-          />
+
+        {/* Flex container for Latest Section and Hero Content */}
+        <div className="flex flex-col md:flex-row md:justify-between md:space-x-8">
+
+          {/* Left: Latest Section */}
+          <div className="w-full md:w-1/2">
+            <LatestSection />
+          </div>
+
+{/* Right: Hero Content */}
+<div className="w-full md:w-1/2 text-center md:text-left md:py-12">
+  {/* Background for <h1> */}
+  <div 
+    className="relative bg-cover bg-center mb-4 md:mb-6"
+    style={{ backgroundImage: 'url(map1.png)' }}
+  >
+    {/* Overlay */}
+    <div className="absolute inset-0 bg-white opacity-80"></div>
+
+    <h1 className="text-2xl md:text-2xl lg:text-3xl font-extrabold text-center mb-4 md:mb-6 relative z-10">
+      B2B & B2B2C MEDIA AND MARKETING SUPPORT FOR THE TECH, MOBILE PHONE,
+      <br className="hidden md:block px-2 md:px-4" />
+      VIDEO GAMING AND TCG TRADE & RETAIL COMMUNITIES
+    </h1>
+  </div>
+
+  <VideoSection />
+
+  {/* Background for <p> */}
+  <div 
+    className="relative bg-cover bg-white mt-8 md:mt-4"
+    style={{ backgroundImage: 'url(map1.png)' }}
+  >
+    {/* Overlay */}
+    <div className="absolute inset-0 bg-white opacity-80"></div>
+
+    <p className="text-lg md:text-2xl lg:text-3xl text-center font-extrabold relative z-10">
+      A DATABASE AND DIRECTORY CONTAINING OVER 150,000 STORES AND IN EXCESS OF 5,000 WHOLESALERS & DISTRIBUTORS WORLDWIDE
+    </p>
+  </div>
+</div>
+
+
         </div>
-        {/* <AdsSection /> */}
+        {/* Map and Ads Section */}
+        <div className="flex flex-col md:flex-row md:justify-between md:space-x-6 mt-6 mb-12">
+          {/* Map Section (left) */}
+          <div className="flex justify-center items-center md:w-1/2 mb-6 md:mb-0">
+          </div>
 
- {/* Flex container for Latest Section and Hero Content */}
- <div className="flex flex-col md:flex-row md:justify-between md:space-x-8">
-      
-      {/* Left: Latest Section */}
-      <div className="w-full md:w-1/2">
-        <LatestSection />
-      </div>
+          {/* Ads Section (right) */}
+          <div className="md:w-1/2">
+          <AdsSection numOfAds={3} /> 
+          </div>
+        </div>
 
-      {/* Right: Hero Content */}
-      <div className="w-full md:w-1/2 text-center md:text-left md:py-12">
-        <h1 className="text-2xl md:text-2xl lg:text-3xl font-extrabold text-center mb-4 md:mb-6">
-          B2B & B2B2C MEDIA AND MARKETING SUPPORT FOR THE TECH, MOBILE PHONE,
-          <br className="hidden md:block  px-2 md:px-4" />
-          VIDEO GAMING AND TCG TRADE & RETAIL COMMUNITIES
-        </h1>
-          <VideoSection />
-        <p className="text-lg md:text-2xl lg:text-3xl text-center font-extrabold mt-8 md:mt-4">
-          A DATABASE AND DIRECTORY CONTAINING OVER 150,000 STORES AND IN EXCESS OF 5,000 WHOLESALERS & DISTRIBUTORS WORLDWIDE
-        </p>
-      </div>
-    </div>
 
 
 
@@ -111,7 +125,11 @@ const HomePage = () => {
         </div>
 
 
-        <AdsSection />
+        <div className="w-full flex justify-center">
+  <img src="/adbanner1.png" alt="Advertisement Banner" className="w-1/2" />
+</div>
+
+
 
         <div className="md:py-6">
           <StylizedNav />

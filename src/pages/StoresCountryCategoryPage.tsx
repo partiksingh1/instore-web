@@ -143,7 +143,7 @@ const StoresCountryCategoryPage = () => {
             </button>
           </div>
         </div>
-        <AdsSection />
+        <AdsSection numOfAds={3} />
       </div>
     </StoresLayout>
   );

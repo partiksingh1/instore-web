@@ -24,7 +24,7 @@ const Magazine: React.FC = () => {
 
 {/* Embed Paperturn Flipbook */}
 <iframe
-  src="https://www.paperturn-view.com/?pid=ODg8868032&bgcolor=transparent&embed=iframe&shadow=1&flipSound=1&hardCover=1"
+  src="https://www.paperturn-view.com/?pid=ODg8872248&bgcolor=transparent&embed=iframe&shadow=1&flipSound=1&hardCover=1"
   width="100%"
   height="auto"
   allowFullScreen
@@ -126,7 +126,7 @@ const Magazine: React.FC = () => {
         </div>
 
         <div className="mt-6">
-          <AdsSection />
+          <AdsSection numOfAds={3} />
         </div>
       </div>
     </MagazineLayout>

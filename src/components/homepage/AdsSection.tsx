@@ -10,18 +10,21 @@ interface Ad {
   // description: string;
 }
 
-const AdCard: React.FC<Ad> = ({ imageUrl }) => (
-<div className="flex items-center justify-center h-full">
-  <img
-    src={imageUrl}
-    alt={"ad"}
-    className="w-3/4 h-full object-cover border-8 border-black"
-  />
-</div>
+interface AdsSectionProps {
+  numOfAds: number;  // Accept the number of ads to display
+}
 
+const AdCard: React.FC<Ad> = ({ imageUrl }) => (
+  <div className="flex items-center justify-center h-full">
+    <img
+      src={imageUrl}
+      alt={"ad"}
+      className="w-3/4 h-full object-cover border-8 border-black"
+    />
+  </div>
 );
 
-const AdsSection: React.FC = () => {
+const AdsSection: React.FC<AdsSectionProps> = ({ numOfAds }) => {
   const [ads, setAds] = useState<Ad[]>([]);  // State to store ads data
   const [loading, setLoading] = useState(true);  // State to manage loading state
 
@@ -47,8 +50,8 @@ const AdsSection: React.FC = () => {
         {loading ? (
           <p>Loading ads...</p>  // Display loading message while fetching ads
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-24">
-            {ads.slice(0, 2).map((ad) => (  // Only show the first two ads
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-4">
+            {ads.slice(0, numOfAds).map((ad) => (  // Use the numOfAds prop to determine how many ads to show
               <AdCard
                 key={ad.id}
                 imageUrl={ad.imageUrl}

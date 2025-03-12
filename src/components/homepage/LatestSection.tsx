@@ -34,7 +34,7 @@ const LatestSection: React.FC = () => {
                 <img
                   src={newsletter.imageUrl || "/news.png"} // Fallback image if no image URL
                   alt={newsletter.subject}
-                  className="w-full h-48 sm:h-56 md:h-64 lg:h-64 object-cover border-2 border-black"
+                  className="w-full h-48 sm:h-56 md:h-48 lg:h-48 object-cover border-2 border-black"
                 />
                 <div className="p-2 mt-2 border-2 border-black bg-white">
                   <h3 className="text-lg sm:text-xl font-semibold mb-2">{newsletter.subject}</h3>

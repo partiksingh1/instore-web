@@ -75,7 +75,7 @@ const Phones = () => {
 
         {/* Ads Section */}
         <div className="-mt-10">
-          <AdsSection />
+        <AdsSection numOfAds={3} />
         </div>
       </div>
     </PhonesLayout>

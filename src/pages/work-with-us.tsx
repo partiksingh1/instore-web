@@ -64,7 +64,7 @@ const WorkWithUs = () => {
 
         {/* Ads Section */}
         <div className="mt-24 w-full">
-          <AdsSection />
+        <AdsSection numOfAds={3} />
         </div>
       </div>
     </WwsLayout>
