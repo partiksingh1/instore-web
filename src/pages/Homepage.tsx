@@ -103,7 +103,7 @@ const HomePage = () => {
                   >
                     <div className="absolute inset-0 bg-white opacity-80"></div>
                     <h1 className="text-xl md:text-xl lg:text-2xl font-extrabold text-center mb-1 relative z-10">
-                      B2B & B2B2C MEDIA AND MARKETING SUPPORT FOR THE INDEPENDENT TECH, MOBILE PHONE,
+                      B2B & B2B2C MEDIA AND MARKETING SUPPORT FOR THE INDEPENDENT GLOBAL TECH, MOBILE PHONE,
                       <br className="hidden md:block px-2 md:px-4" />
                       VIDEO GAMING AND TCG TRADE & RETAIL COMMUNITIES
                     </h1>
