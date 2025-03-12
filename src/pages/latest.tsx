@@ -1,10 +1,9 @@
-import  { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import StylizedNav from "@/components/homepage/Navbar";
 import AdsSection from "@/components/homepage/AdsSection";
 import LatestLayout from "@/layouts/latestLayout";
 import axios from "axios";
 import Socials from "@/components/Socials";
-
 const Latest = () => {
   const [newsletters, setNewsletters] = useState<any[]>([]); // State to store fetched newsletters
   const [loading, setLoading] = useState<boolean>(true); // Loading state
@@ -28,9 +27,9 @@ const Latest = () => {
     <LatestLayout>
       <div className="min-h-screen flex flex-col items-center text-black">
         <StylizedNav />
-        
+
         {/* Social Media Icons Section */}
-        <Socials/>
+        <Socials />
 
         {/* Heading */}
         <h1 className="text-5xl md:text-5xl font-bold mt-4 md:-mt-12 text-center">LATEST</h1>

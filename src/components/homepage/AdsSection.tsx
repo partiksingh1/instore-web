@@ -11,15 +11,14 @@ interface Ad {
 }
 
 const AdCard: React.FC<Ad> = ({ imageUrl }) => (
-  <div className="rounded-lg hover:shadow-lg transition-shadow duration-300">
-    <img
-      src={imageUrl}
-      alt={"ad"}
-      width={400}
-      height={250}
-      className="w-full h-80 object-cover border-8 border-black"
-    />
-  </div>
+<div className="flex items-center justify-center h-full">
+  <img
+    src={imageUrl}
+    alt={"ad"}
+    className="w-3/4 h-full object-cover border-8 border-black"
+  />
+</div>
+
 );
 
 const AdsSection: React.FC = () => {

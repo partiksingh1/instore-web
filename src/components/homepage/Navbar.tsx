@@ -6,12 +6,12 @@ import { Home } from "lucide-react";
 
 const StylizedNav: React.FC = () => {
   const [navItems] = useState<{ label: JSX.Element | string; path: string }[]>([
-    { label: <Home className='text-red-500'/>, path: "/" },
+    { label: <Home className='text-red-800 w-12 h-12' size={32}/>, path: "/" },
     { label: "LATEST", path: "/latest" },
+    { label: "MAGAZINE & BUYER'S GUIDES", path: "/magazine" },
     { label: "STORES", path: "/stores" },
     { label: "WHOLESALERS & DISTRIBUTORS", path: "/WandD" },
     { label: "STORE WINDOW", path: "/store-window" },
-    { label: "MAGAZINE & BUYER'S GUIDES", path: "/magazine" },
     { label: "DEMO DAYS", path: "/demo-days" },
     { label: "IN-STORE VIDEO", path: "/instore-video" },
     { label: "POSTERS", path: "/posters" },
@@ -55,7 +55,7 @@ const StylizedNav: React.FC = () => {
     <nav className="p-2">
       <div className="flex flex-wrap justify-center gap-2">
         {/* Render static items */}
-        {[...navItems.slice(0, 2), ...dynamicItems, ...navItems.slice(2)].map((item, index) => (
+        {[...navItems.slice(0, 3), ...dynamicItems, ...navItems.slice(2)].map((item, index) => (
           <motion.div
             key={item.path}
             onHoverStart={() => setHoveredItem(index)}

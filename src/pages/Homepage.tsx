@@ -1,13 +1,12 @@
 import { SocialIcon } from 'react-social-icons';
 import SpotlightSection from '@/components/homepage/SpotlightSection';
-// import InteractiveMap from '@/components/homepage/InteractiveMap';
 import StylizedNav from '@/components/homepage/Navbar';
 import AdsSection from '@/components/homepage/AdsSection';
 import VideoSection from '@/components/homepage/VideoSection';
 import World from "@react-map/world";
-import { useNavigate } from 'react-router-dom';
 import Footer from '@/components/Footer';
 import { useEffect, useState } from 'react';
+import LatestSection from '@/components/homepage/LatestSection';
 
 const HomePage = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -16,16 +15,7 @@ const HomePage = () => {
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
-  const worldSize = windowWidth < 640 ? 350 : 1000;
-  const navigate = useNavigate();
-  const redirect = (state: string | null) => {
-    if (state) {
-      // Only navigate if `state` is a valid string
-      navigate(`/stores`);
-    } else {
-      console.warn("Invalid country code: state is null");
-    }
-  };
+  const worldSize = windowWidth < 640 ? 350 : 800;
   return (
     <div className="min-h-screen relative overflow-hidden">
       <div
@@ -81,31 +71,39 @@ const HomePage = () => {
 
 
         <StylizedNav />
-
-        {/* Hero Content */}
-        <div className="text-center md:py-12">
-          <h1 className="text-2xl md:text-2xl lg:text-3xl font-extrabold mb-4 md:mb-6">
-            B2B & B2B2C MEDIA AND MARKETING SUPPORT FOR THE TECH, MOBILE PHONE,
-            <br className="hidden md:block  px-2 md:px-4" />
-            VIDEO GAMING AND TCG TRADE & RETAIL COMMUNITIES
-          </h1>
-          <div className="my-4 md:my-8">
-            <VideoSection />
-          </div>
-          <p className="text-lg md:text-2xl lg:text-3xl font-extrabold mt-8 md:mt-8">
-            A DATABASE AND DIRECTORY CONTAINING OVER 150,000 STORES AND IN EXCESS OF 5,000 WHOLESALERS & DISTRIBUTORS WORLDWIDE
-          </p>
-        </div>
-
-        {/* <InteractiveMap /> */}
-        <div className="flex flex-col justify-center items-center">
+                {/* <InteractiveMap /> */}
+                <div className="flex flex-col justify-center items-center">
           <World
-            onSelect={redirect}
             size={worldSize}
-            hoverColor="orange"
-            type="select-single"
+            type='select-multiple'
+            disableHover
+            disableClick
           />
         </div>
+        {/* <AdsSection /> */}
+
+ {/* Flex container for Latest Section and Hero Content */}
+ <div className="flex flex-col md:flex-row md:justify-between md:space-x-8">
+      
+      {/* Left: Latest Section */}
+      <div className="w-full md:w-1/2">
+        <LatestSection />
+      </div>
+
+      {/* Right: Hero Content */}
+      <div className="w-full md:w-1/2 text-center md:text-left md:py-12">
+        <h1 className="text-2xl md:text-2xl lg:text-3xl font-extrabold text-center mb-4 md:mb-6">
+          B2B & B2B2C MEDIA AND MARKETING SUPPORT FOR THE TECH, MOBILE PHONE,
+          <br className="hidden md:block  px-2 md:px-4" />
+          VIDEO GAMING AND TCG TRADE & RETAIL COMMUNITIES
+        </h1>
+          <VideoSection />
+        <p className="text-lg md:text-2xl lg:text-3xl text-center font-extrabold mt-8 md:mt-4">
+          A DATABASE AND DIRECTORY CONTAINING OVER 150,000 STORES AND IN EXCESS OF 5,000 WHOLESALERS & DISTRIBUTORS WORLDWIDE
+        </p>
+      </div>
+    </div>
+
 
 
         <div className="md:py-12">
