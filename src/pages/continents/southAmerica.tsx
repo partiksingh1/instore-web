@@ -96,7 +96,7 @@ const SouthAmerica = () => {
         </div>
       </div>
     </div>
-    <AdsSection numOfAds={3}/>
+    <AdsSection numOfAds={3} position="homepage"/>
     </StoresLayout>
   );
 };

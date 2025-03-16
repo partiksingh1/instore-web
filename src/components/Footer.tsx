@@ -4,26 +4,25 @@ const Footer = () => {
   return (
     <div className="flex flex-col md:flex-row justify-between items-center py-4 md:py-12 space-y-8 md:space-y-0">
       {/* Logo Section */}
-      <div className="w-full md:w-1/3 flex justify-center md:justify-start">
+      <div className="w-1/2 flex justify-center">
         <img
           src="/logo.png"
           alt="Logo"
-          width={200}
-          height={100}
-          className="w-full max-w-[200px] md:max-w-[300px] lg:max-w-[400px] xl:max-w-[500px]"
+          className="w-full max-w-[100px] md:max-w-[200px] lg:max-w-[200px] xl:max-w-[300px]"
         />
       </div>
 
       {/* Privacy Policy, Terms & Conditions, and Copyright */}
-      <div className="w-full md:w-2/3 text-lg font-bold text-center md:text-left px-2">
+      <div className="w-full text-lg font-bold text-center">
         <h4>
           <a href="" className="text-blue-800 underline">PRIVACY POLICY</a> |{" "}
           <a href="" className="text-blue-800 underline">TERMS & CONDITIONS</a> | Copyright Ⓒ 2025 <br />
-          <span className="flex justify-center md:justify-start mt-2 md:mt-0">
+          <span className="flex justify-center mt-2">
             Powered by PEOPLE NOT ALGORITHMS!
           </span>
         </h4>
       </div>
+
 
       {/* Social Icons */}
       <div className="w-full flex justify-center gap-3 md:justify-end md:w-1/3">
