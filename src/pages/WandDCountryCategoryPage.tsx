@@ -165,7 +165,7 @@ const WandDCountryCategoryPage = () => {
             </button>
           </div>
         </div>
-        <AdsSection numOfAds={3} />
+        <AdsSection numOfAds={3} position="homepage"/>
       </div>
     </StoresLayout>
   );

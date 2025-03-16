@@ -63,7 +63,7 @@ const Podcast: React.FC = () => {
 
             {/* Ads Section */}
             <div className="mt-6">
-                <AdsSection numOfAds={3} />
+                <AdsSection numOfAds={3} position="homepage"/>
             </div>
         </PodcastLayout>
     );

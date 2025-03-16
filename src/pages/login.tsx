@@ -123,7 +123,7 @@ const Login = () => {
 
         {/* Footer Section */}
         <div className="mt-14 w-full">
-        <AdsSection numOfAds={3} />
+        <AdsSection numOfAds={3} position="homepage"/>
         </div>
       </div>
 
