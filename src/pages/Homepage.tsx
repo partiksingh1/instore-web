@@ -27,19 +27,22 @@ const HomePage = () => {
 
       {/* Main container with responsive padding */}
       <div className="border-8 md:border-[18px] border-blue-700 m-2 md:m-4 p-2 md:p-4 relative rounded-lg">
-        <div className="w-full p-2 m-2">
-          {/* Use flex to make them align in a single row */}
-          <div className="flex flex-row space-x-2">
-            {/* Ads Section (Lazy Load Ads Section Components) */}
-            {[...Array(5)].map((_, index) => (
-              <div key={index} className="flex-1 m-1">
-                <Suspense fallback={<div>Loading Ads...</div>}>
-                  <AdsSection numOfAds={1} />
-                </Suspense>
-              </div>
-            ))}
-          </div>
+      <div className="flex justify-center w-full">
+  <div className="w-2/5 p-2 m-2">
+    {/* Use flex to make them align in a single row */}
+    <div className="flex flex-row space-x-2 justify-center">
+      {/* Ads Section (Lazy Load Ads Section Components) */}
+      {[...Array(1)].map((_, index) => (
+        <div key={index} className="flex-1 m-1">
+          <Suspense fallback={<div>Loading Ads...</div>}>
+            <AdsSection numOfAds={1} position="homepage-top-banner" />
+          </Suspense>
         </div>
+      ))}
+    </div>
+  </div>
+</div>
+
 
         <div className="flex">
           {/* Main Content Section on the right side (3/4 width) */}
@@ -86,7 +89,7 @@ const HomePage = () => {
             {/* Flex container for Latest Section and Hero Content */}
             <div className="flex flex-col md:flex-row md:justify-between items-center md:items-start space-x-0">
               {/* Left: Latest Section */}
-              <div className="w-full md:w-2/5 flex justify-end items-center">
+              <div className="w-full md:w-1/2 flex justify-end items-center">
                 <div className="flex justify-center items-center w-full">
                   <Suspense fallback={<div>Loading Latest Section...</div>}>
                     <LatestSection numOfNews={2} />
@@ -95,7 +98,7 @@ const HomePage = () => {
               </div>
 
               {/* Right: Hero Content */}
-              <div className="w-full justify-start items-center flex flex-col text-center md:text-left md:py-12 p-4">
+              <div className="w-1/2 justify-start items-center flex flex-col text-center md:text-left md:py-6 p-2">
                 <div className="flex flex-col justify-start items-center w-full">
                   <div
                     className="relative bg-cover bg-center mb-4 md:mb-6"
@@ -140,11 +143,11 @@ const HomePage = () => {
           </div>
 
           {/* Ads Section on the left side (1/4 width) */}
-          <div className="w-1/4 p-2 m-2">
+          <div className="w-1/4">
             {[...Array(9)].map((_, index) => (
               <div key={index} className="m-1">
                 <Suspense fallback={<div>Loading Ads...</div>}>
-                  <AdsSection numOfAds={1} />
+                  <AdsSection numOfAds={1} position='homepage' />
                 </Suspense>
               </div>
             ))}

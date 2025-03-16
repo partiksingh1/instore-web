@@ -38,7 +38,7 @@ const LatestSection: React.FC<LatestSectionProps> = ({ numOfNews }) => {
             {newslettersToShow.map((newsletter) => (
               <div key={newsletter.id} className="shadow-lg overflow-hidden mb-10">
                 <img
-                  src={newsletter.imageUrl || "/news.png"} // Fallback image if no image URL
+                  src={newsletter.imageUrl} // Fallback image if no image URL
                   alt={newsletter.subject}
                   className="w-full h-1/4 sm:h-56 md:h-48 lg:h-56 object-cover border-2 border-black"
                 />
