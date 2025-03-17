@@ -21,7 +21,8 @@ const AdminStoreWindow = () => {
     title: '',
     description: '',
     url: '',
-    image: null as File | null,
+    content:'',
+    media: null as File | null, // media can be an image or video
   });
 
   const [showDeleteModal, setShowDeleteModal] = useState<boolean>(false);
@@ -53,13 +54,14 @@ const AdminStoreWindow = () => {
     formData.append('title', newStoreWindow.title);
     formData.append('description', newStoreWindow.description);
     formData.append('url', newStoreWindow.url);
-    if (newStoreWindow.image) {
-      formData.append('image', newStoreWindow.image);
+
+    if (newStoreWindow.media) {
+      formData.append('media', newStoreWindow.media);
     }
 
     try {
       await axios.post(`${import.meta.env.VITE_SOME_KEY}/admin/create-window`, formData);
-      setNewStoreWindow({ title: '', description: '', url: '', image: null });
+      setNewStoreWindow({ title: '', description: '', url: '', media: null,content:'' });
       fetchStoreWindows();
       toast.success('Store Window created successfully');
     } catch (error) {
@@ -92,6 +94,18 @@ const AdminStoreWindow = () => {
 
       {/* Create Store Window Form */}
       <form onSubmit={handleCreateStoreWindow} className="space-y-4">
+      <div className="space-y-1">
+          <label htmlFor="content" className="block text-lg font-medium">Content Type</label>
+          <input
+            type="text"
+            id="content"
+            value={newStoreWindow.content}
+            onChange={(e) => setNewStoreWindow({ ...newStoreWindow, content: e.target.value })}
+            className="w-full p-3 border border-gray-300 rounded-md"
+            required
+            disabled={creating}
+          />
+        </div>
         <div className="space-y-1">
           <label htmlFor="title" className="block text-lg font-medium">Title</label>
           <input
@@ -131,12 +145,12 @@ const AdminStoreWindow = () => {
         </div>
 
         <div className="space-y-1">
-          <label htmlFor="image" className="block text-lg font-medium">Image</label>
+          <label htmlFor="media" className="block text-lg font-medium">Image/Video</label>
           <input
             type="file"
-            id="image"
-            accept="image/*"
-            onChange={(e) => setNewStoreWindow({ ...newStoreWindow, image: e.target.files?.[0] || null })}
+            id="media"
+            accept="image/*,video/*"
+            onChange={(e) => setNewStoreWindow({ ...newStoreWindow, media: e.target.files?.[0] || null })}
             className="w-full p-3 border border-gray-300 rounded-md"
             disabled={creating}
           />
@@ -159,7 +173,23 @@ const AdminStoreWindow = () => {
         ) : storeWindows.length > 0 ? (
           storeWindows.map((window) => (
             <div key={window.id} className="border p-4 rounded-lg shadow-lg">
-              <img src={window.imageUrl} alt={window.title} className="w-full h-40 object-cover rounded-md mb-4" />
+              {window.imageUrl.includes('http') ? (
+                window.imageUrl.endsWith('.mp4') ? (
+                  <video
+                    src={window.imageUrl}
+                    controls
+                    className="w-full h-40 object-cover rounded-md mb-4"
+                  />
+                ) : (
+                  <img
+                    src={window.imageUrl}
+                    alt={window.title}
+                    className="w-full h-40 object-cover rounded-md mb-4"
+                  />
+                )
+              ) : (
+                <div className="text-center">No media available</div>
+              )}
               <h3 className="text-xl font-semibold">{window.title}</h3>
               <p className="text-gray-600">{window.description}</p>
               <div className="mt-4 flex justify-between items-center">

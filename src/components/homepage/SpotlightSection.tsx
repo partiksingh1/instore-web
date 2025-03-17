@@ -29,12 +29,15 @@ const SpotlightSection = ({ borderFrame = "/border.svg" }) => {
     );
   }
 
+  // Check if the product image URL is a video
+  const isVideo = product.imageUrl?.endsWith(".mp4") || product.imageUrl?.endsWith(".webm");
+
   return (
     <div className="relative max-w-full mx-auto my-20 px-4 sm:px-6 lg:px-8">
       {/* External Border Frame */}
-      <img 
-        src={borderFrame} 
-        alt="Border Frame" 
+      <img
+        src={borderFrame}
+        alt="Border Frame"
         className="absolute inset-0 w-full h-full z-10 pointer-events-none scale-[1.6] hidden md:block"
       />
 
@@ -48,28 +51,44 @@ const SpotlightSection = ({ borderFrame = "/border.svg" }) => {
         <div className="max-w-7xl mx-auto relative">
           {/* Content */}
           <div className="flex flex-col md:flex-row items-center md:items-start justify-center md:justify-start space-y-8 md:space-y-0">
-            
-            {/* Image Section */}
-            <motion.div 
+
+            {/* Image or Video Section */}
+            <motion.div
               className="md:w-2/5 flex justify-center md:justify-end"
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
             >
-              <div className="relative group flex justify-end items-end">
-                <div className="absolute -inset-1 bg-gradient-to-r from-red-600 to-blue-600 rounded-lg blur opacity-25 group-hover:opacity-75 transition duration-1000"></div>
-                <img
-                  src={product.imageUrl} // Use the fetched product's image URL
-                  alt={product.title}
-                  className="relative rounded-lg shadow-2xl w-full max-w-[300px] object-cover transform group-hover:scale-[1.10] transition duration-500"
-                  width={300}
-                  height={200}
-                />
+              <div className="relative group flex justify-center items-center h-full">
+                {/* Gradient effect */}
+                <div className="absolute -inset-1  rounded-lg transition duration-1000"></div>
+
+                {/* Conditionally Render Image or Video */}
+                {isVideo ? (
+                  <video
+                    src={product.imageUrl} // Use the fetched product's video URL
+                    className="mt-20 relative rounded-lg shadow-2xl object-cover transform group-hover:scale-[1.10] transition duration-500"
+                    width={300}
+                    height={200}
+                    controls
+                    loop
+                    playsInline
+                  />
+                ) : (
+                  <img
+                    src={product.imageUrl} // Use the fetched product's image URL
+                    alt={product.title}
+                    className="relative rounded-lg shadow-2xl object-cover transform group-hover:scale-[1.10] transition duration-500"
+                    width={300}
+                    height={200}
+                  />
+                )}
               </div>
+
             </motion.div>
 
             {/* Content Section */}
-            <motion.div 
+            <motion.div
               className="flex flex-col md:w-1/2 space-y-6 p-5"
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
