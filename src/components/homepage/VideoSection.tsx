@@ -1,13 +1,11 @@
 import { Pause, Play, Volume2, VolumeX } from "lucide-react";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 
 const VideoSection = () => {
   // Create a reference to the video element
   const videoRef = useRef<HTMLVideoElement | null>(null);
-  const [isMuted, setIsMuted] = useState(false);
-
-  // State to track whether the video is playing or paused
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [isMuted, setIsMuted] = useState(true);  // Set initial mute state to true
+  const [isPlaying, setIsPlaying] = useState(false); // Track play/pause state
 
   // Function to toggle play/pause
   const togglePlayPause = () => {
@@ -20,6 +18,8 @@ const VideoSection = () => {
       setIsPlaying(!isPlaying);
     }
   };
+
+  // Function to toggle mute/unmute
   const toggleMute = () => {
     if (videoRef.current) {
       videoRef.current.muted = !isMuted;
@@ -27,22 +27,22 @@ const VideoSection = () => {
     setIsMuted(!isMuted);
   };
 
+  // Set the video to be muted when the page loads (initially)
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.muted = true;  // Mute video by default
+    }
+  }, []); // Empty dependency array to ensure this runs once on mount
+
   return (
     <div className="flex justify-center items-center bg-transparent w-full">
-      {/* Left Images - Align vertically
-      <div className="flex flex-col gap-4">
-        <img src="/1.png" alt="Image 1" width={176} height={176} className="object-contain" />
-        <img src="/2.png" alt="Image 2" width={176} height={176} className="object-contain" />
-        <img src="/3.png" alt="Image 3" width={176} height={176} className="object-contain" />
-      </div> */}
-
       {/* Center Video */}
       <div className="relative">
         <video
           ref={videoRef}
           src="./video.mp4"
           autoPlay
-          className="w-full object-contain" // Increased the size of the video
+          className="w-full object-contain border-2 border-black p-2"
           poster="./thumbnail.png"
         ></video>
 
@@ -64,13 +64,6 @@ const VideoSection = () => {
           </button>
         </div>
       </div>
-
-      {/* Right Images - Align vertically
-      <div className="flex flex-col gap-4">
-        <img src="/4.png" alt="Image 4" width={176} height={176} className="object-contain" />
-        <img src="/5.png" alt="Image 5" width={176} height={176} className="object-contain" />
-        <img src="/6.png" alt="Image 6" width={176} height={176} className="object-contain" />
-      </div> */}
     </div>
   );
 };
