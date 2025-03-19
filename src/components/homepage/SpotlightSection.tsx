@@ -73,6 +73,7 @@ const SpotlightSection = ({ borderFrame = "/border.svg" }) => {
                     controls
                     loop
                     playsInline
+                    muted
                   />
                 ) : (
                   <img

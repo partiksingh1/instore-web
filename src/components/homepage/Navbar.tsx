@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Home } from "lucide-react";
 
 const StylizedNav: React.FC = () => {
   const [navItems] = useState<{ label: JSX.Element | string; path: string }[]>([
-    { label: <Home className='text-red-700' size={30} />, path: "/" },  // Increased the size here
+    { label: <Home className='text-red-700' size={30} />, path: "/" },
     { label: "LATEST", path: "/latest" },
     { label: "MAGAZINE & BUYER'S GUIDES", path: "/magazine" },
     { label: "STORES", path: "/stores" },
@@ -25,6 +25,7 @@ const StylizedNav: React.FC = () => {
   const [dynamicItems, setDynamicItems] = useState<{ label: string; path: string }[]>([]);
   const [hoveredItem, setHoveredItem] = useState<number | null>(null);
   const navigate = useNavigate();
+  const location = useLocation();  // Get the current location (path)
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -34,7 +35,7 @@ const StylizedNav: React.FC = () => {
         if (data.message === "categories fetched") {
           const items = data.categories.map((category: { name: string; }) => ({
             label: category.name,
-            path: `/${category.name.toLowerCase().replace(/\s+/g, '-')}` // Create a path based on the category name
+            path: `/${category.name.toLowerCase().replace(/\s+/g, '-')}`
           }));
           setDynamicItems(items);
         }
@@ -47,7 +48,7 @@ const StylizedNav: React.FC = () => {
   }, []);
 
   const handleNavClick = (path: string) => {
-    navigate(path); // Navigate to the specified path
+    navigate(path);  // Navigate to the specified path
   };
 
   return (
@@ -64,7 +65,8 @@ const StylizedNav: React.FC = () => {
             <button
               onClick={() => handleNavClick(item.path)}
               className={`
-                bg-blue-600 hover:bg-blue-700 text-white 
+                ${item.path === location.pathname ? 'bg-red-700' : 'bg-blue-600'} 
+                text-white 
                 px-6 py-2 rounded-md 
                 transition-all duration-300
                 ${hoveredItem === index ? 'scale-105' : ''}  {/* Keep hover scaling effect */}
@@ -80,7 +82,6 @@ const StylizedNav: React.FC = () => {
       </div>
     </nav>
   );
-  
 };
 
 export default StylizedNav;

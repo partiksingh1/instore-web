@@ -91,7 +91,7 @@ const InstoreVideo = () => {
         <StylizedNav />
         <Socials/>
         
-        <h1 className="text-4xl sm:text-4xl md:text-5xl font-bold text-center mt-4">INSTORE VIDEO</h1>
+        <h1 className="text-4xl sm:text-4xl md:text-5xl font-bold text-center -mt-12">INSTORE VIDEO</h1>
 
         <div className="relative">
           <div

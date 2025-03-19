@@ -21,8 +21,8 @@ export default function PodcastLayout({
 
     
     {/* Arrows Container */}
-    <div className="absolute left-1/2 transform -translate-x-1/2 -top-5 z-10 flex gap-2">
-      <div className="text-gray text-7xl font-extralight flex m-0.5">
+    <div className="absolute left-1/2 transform -translate-x-1/2 -top-5 md:-top-4 z-10 flex gap-2">
+      <div className="text-white text-7xl font-extralight flex m-0.5">
         <img src="/arrow.png" alt="Arrow" width={44} height={44} className="w-auto h-11" />
         <img src="/arrow.png" alt="Arrow" width={44} height={44} className="w-auto h-11 -ml-4" />
       </div>

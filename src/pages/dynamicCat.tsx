@@ -37,10 +37,18 @@ const Phones = () => {
         <Socials />
 
         {/* Heading */}
-        <h1 className="text-5xl font-bold mb-8 mt-8 md:-mt-12 text-center">{categoryH}</h1>
+        {/* <h1 className="text-5xl font-bold mb-8 mt-8 md:-mt-12 text-center">{categoryH}</h1> */}
+        <div className="flex justify-center mt-4 md:-mt-12">
+          <img
+            src="/adbanner1.png"
+            alt="Latest"
+            className="w-32 md:w-3/4 h-auto"
+          />
+        </div>
+
 
         {/* Layout for Products with Background Image */}
-        <div className="relative w-full bg-center mb-8 min-h-screen flex items-center justify-center">
+        <div className="relative w-full bg-center min-h-screen flex items-center justify-center">
           {/* Background Image behind Buttons */}
           <div
             className="absolute inset-0 bg-cover bg-center opacity-25"
@@ -72,11 +80,17 @@ const Phones = () => {
             )}
           </div>
         </div>
+        <div className="flex justify-center mb-10">
+          <img
+            src="/adbanner1.png"
+            alt="Latest"
+            className="w-32 md:w-3/4 h-auto"
+          />
+        </div>
+
 
         {/* Ads Section */}
-        <div className="-mt-10">
         <AdsSection numOfAds={3} position="homepage"/>
-        </div>
       </div>
     </PhonesLayout>
   );
