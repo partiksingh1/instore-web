@@ -5,7 +5,6 @@ import { toast } from 'react-toastify';
 // TypeScript types
 interface VideoFormData {
   title: string;
-  duration: string;
   video: File | null;
 }
 
@@ -18,7 +17,6 @@ interface Video {
 const AdminVideo: React.FC = () => {
   const [videoData, setVideoData] = useState<VideoFormData>({
     title: '',
-    duration: '',
     video: null,
   });
   const [loading, setLoading] = useState(false);
@@ -47,7 +45,7 @@ const AdminVideo: React.FC = () => {
 
   const handleUpload = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!videoData.title || !videoData.duration || !videoData.video) {
+    if (!videoData.title || !videoData.video) {
       toast.error('Please fill all fields and upload a video.');
       return;
     }
@@ -56,7 +54,6 @@ const AdminVideo: React.FC = () => {
     const formData = new FormData();
     formData.append('video', videoData.video);
     formData.append('title', videoData.title);
-    formData.append('duration', videoData.duration);
 
     try {
       const response = await axios.post(`${import.meta.env.VITE_SOME_KEY}/admin/videos`, formData, {
@@ -64,7 +61,7 @@ const AdminVideo: React.FC = () => {
       });
       setVideos((prev) => [...prev, response.data.video]);
       toast.success('Video uploaded successfully!');
-      setVideoData({ title: '', duration: '', video: null });
+      setVideoData({ title: '', video: null });
     } catch (error) {
       toast.error('Failed to upload video.');
     } finally {
@@ -116,16 +113,6 @@ const AdminVideo: React.FC = () => {
             type="text"
             name="title"
             value={videoData.title}
-            onChange={handleInputChange}
-            className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-          />
-        </div>
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">Duration (seconds)</label>
-          <input
-            type="number"
-            name="duration"
-            value={videoData.duration}
             onChange={handleInputChange}
             className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
           />
