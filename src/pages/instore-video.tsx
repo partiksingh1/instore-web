@@ -91,7 +91,7 @@ const InstoreVideo = () => {
         <StylizedNav />
         <Socials/>
         
-        <h1 className="text-4xl sm:text-4xl md:text-5xl font-bold text-center -mt-12">INSTORE VIDEO</h1>
+        <h1 className="text-4xl sm:text-4xl md:text-5xl font-bold text-center ">INSTORE VIDEO</h1>
 
         <div className="relative">
           <div
@@ -160,29 +160,35 @@ const InstoreVideo = () => {
               <div>
                 <label className="block mb-2 text-lg font-semibold text-gray-700">Select video:</label>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-h-96 overflow-y-auto p-2 bg-gray-50 rounded-lg">
-                  {videos.map((video) => (
-                    <div
-                      key={video.id}
-                      onClick={() => handleVideoSelect(video.url)}
-                      className={`cursor-pointer p-3 border rounded-lg transition-all duration-200 ${
-                        selectedVideo === video.url
-                          ? 'border-blue-500 bg-blue-50 shadow-md'
-                          : 'border-gray-200 hover:bg-gray-100 hover:shadow-md'
-                      }`}
-                    >
-                      <video
-                        src={video.url}
-                        className="w-full h-40 object-cover rounded-md mb-2"
-                        muted
-                        preload="metadata"
-                        onMouseEnter={(e) => e.currentTarget.play()}
-                        onMouseLeave={(e) => e.currentTarget.pause()}
-                        onClick={(e) => e.preventDefault()}
-                      />
-                      <p className="text-sm text-gray-600 text-center truncate">{video.title}</p>
-                    </div>
-                  ))}
-                </div>
+  {videos.map((video) => (
+    <div
+      key={video.id}
+      onClick={() => handleVideoSelect(video.url)}
+      className={`cursor-pointer p-3 border rounded-lg transition-all duration-200 ${
+        selectedVideo === video.url
+          ? 'border-blue-500 bg-blue-50 shadow-md'
+          : 'border-gray-200 hover:bg-gray-100 hover:shadow-md'
+      }`}
+    >
+      <video
+        className="w-full h-40 object-cover rounded-md mb-2"
+        muted
+        controls
+        preload="auto"
+        onMouseEnter={(e) => e.currentTarget.play().catch((err) => console.log('Playback failed:', err.message))}
+        onMouseLeave={(e) => e.currentTarget.pause()}
+        onClick={(e) => e.preventDefault()}
+      >
+        <source
+          src={video.url}
+          type={video.url.endsWith('.mov') ? 'video/quicktime' : 'video/mp4'}
+        />
+        <p className="text-sm text-gray-500">Your browser doesn’t support this video format.</p>
+      </video>
+      <p className="text-sm text-gray-600 text-center truncate">{video.title}</p>
+    </div>
+  ))}
+</div>
               </div>
 
               <div>

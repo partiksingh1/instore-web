@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import StylizedNav from "@/components/homepage/Navbar";
-import AdsSection from "@/components/homepage/AdsSection";
 import Btn from "./Button";
 import PhonesLayout from "@/layouts/phonesLayout";
 import axios from "axios";
@@ -55,10 +54,10 @@ const Phones = () => {
             style={{ backgroundImage: "url('/store1.png')", backgroundSize: "cover", backgroundPosition: "center" }}
           ></div>
 
-          <div className="relative z-10 p-2 md:p-12 w-full flex justify-center">
+          <div className="relative z-10 p-2 w-full flex">
             {/* Conditional Layout */}
             {products.length < 10 ? (
-              <div className="flex flex-col -mt-56 md:-mt-32 items-center gap-4 md:p-0 w-full max-w-sm mx-auto">
+              <div className="flex flex-col items-center w-full gap-8">
                 {products.map((product) => (
                   <Btn
                     key={product.id}
@@ -87,10 +86,6 @@ const Phones = () => {
             className="w-32 md:w-3/4 h-auto"
           />
         </div>
-
-
-        {/* Ads Section */}
-        <AdsSection numOfAds={3} position="homepage"/>
       </div>
     </PhonesLayout>
   );
