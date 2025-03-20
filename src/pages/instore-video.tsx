@@ -171,21 +171,18 @@ const InstoreVideo = () => {
           : 'border-gray-200 hover:bg-gray-100 hover:shadow-md'
       }`}
     >
-      <video
-        className="w-full h-40 object-cover rounded-md mb-2"
-        muted
-        controls
-        preload="auto"
-        onMouseEnter={(e) => e.currentTarget.play().catch((err) => console.log('Playback failed:', err.message))}
-        onMouseLeave={(e) => e.currentTarget.pause()}
-        onClick={(e) => e.preventDefault()}
-      >
-        <source
-          src={video.url}
-          type={video.url.endsWith('.mov') ? 'video/quicktime' : 'video/mp4'}
-        />
-        <p className="text-sm text-gray-500">Your browser doesn’t support this video format.</p>
-      </video>
+       <video
+                    src={video.url}
+                    controls
+                    className="w-full h-48 object-cover"
+                    preload="metadata"
+                    onError={(e) => {
+                      console.error(`Failed to load video: ${video.url}`);
+                      e.currentTarget.nextElementSibling?.classList.remove('hidden'); // Show fallback
+                    }}
+                  >
+                    Your browser does not support the video tag.
+                  </video>
       <p className="text-sm text-gray-600 text-center truncate">{video.title}</p>
     </div>
   ))}
