@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom'; // For routing
 import { toast } from 'react-toastify'; // Import Toastify for notifications
 import 'react-toastify/dist/ReactToastify.css'; // Include the CSS for Toastify
 import { jwtDecode } from 'jwt-decode'; // Import jwt-decode to decode the JWT
-import AdsSection from '@/components/homepage/AdsSection';
 import RegisterLayout from '@/layouts/registerLayout';
 import StylizedNav from '@/components/homepage/Navbar';
 import Socials from '@/components/Socials';
@@ -23,6 +22,8 @@ const Login = () => {
     if (token) {
       // Decode the token to get user information
       const decodedToken: any = jwtDecode(token);
+      console.log("decoded token",decodedToken);
+      
       setUserName(decodedToken.name); // Set the user's name from the token
     }
   }, [navigate]);
@@ -41,6 +42,7 @@ const Login = () => {
         toast.success('Login successful! Redirecting...'); // Success notification
         // Decode the token to get user information
         const decodedToken: any = jwtDecode(response.data.token);
+        localStorage.setItem('role', decodedToken.role);
         setUserName(decodedToken.name); // Set the user's name from the token
       }
     } catch (err: any) {
@@ -55,6 +57,7 @@ const Login = () => {
   const handleLogout = () => {
     // Remove the token from localStorage
     localStorage.removeItem('authToken');
+    localStorage.removeItem('role');
     setUserName(null); // Clear the userName state
     toast.info('You have logged out successfully.'); // Logout success notification
     // Redirect to login page or home page
@@ -80,6 +83,14 @@ const Login = () => {
             >
               LOG OUT
             </button>
+            {localStorage.getItem('role') === 'ADMIN' && (
+              <button
+                onClick={() => { navigate('/admin/dashboard'); }}
+                className="mt-4 px-4 py-2 bg-red-600 text-white rounded hover:bg-red-800"
+              >
+                ADMIN DASHBOARD
+              </button>
+            )}
           </div>
         ) : (
           <div className="text-2xl text-gray-600"></div>
@@ -121,10 +132,10 @@ const Login = () => {
           </div>
         )}
 
-        {/* Footer Section */}
+        {/* Footer Section
         <div className="mt-14 w-full">
         <AdsSection numOfAds={3} position="homepage"/>
-        </div>
+        </div> */}
       </div>
 
       {/* Toastify container for notifications */}

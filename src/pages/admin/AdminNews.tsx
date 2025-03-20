@@ -2,13 +2,14 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const AdminNews: React.FC = () => {
   const [newsletters, setNewsletters] = useState<any[]>([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [deleteId, setDeleteId] = useState<number | null>(null);
   const [loading, setLoading] = useState(false); // New loading state
-
+  const navigate = useNavigate();
   const { register, handleSubmit, reset } = useForm();
 
   useEffect(() => {
@@ -93,6 +94,17 @@ const AdminNews: React.FC = () => {
       }
     }
   };
+  useEffect(() => {
+    // Check if the user has the 'ADMIN' role
+    const role = localStorage.getItem('role');
+    if (role !== 'ADMIN') {
+      // If the user is not an admin, redirect them to the login page (or any other page)
+      toast.error('You are not authorized to access this page.');
+      navigate('/login');
+    } else {
+      fetchNewsletters();
+    }
+  }, [navigate]);
 
   return (
     <div className="container mx-auto p-6">

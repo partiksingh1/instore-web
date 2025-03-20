@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
 // TypeScript types
 interface VideoFormData {
@@ -24,6 +25,7 @@ const AdminVideo: React.FC = () => {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [videoToDelete, setVideoToDelete] = useState<number | null>(null);
   const [videos, setVideos] = useState<Video[]>([]);
+  const navigate = useNavigate();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -99,8 +101,14 @@ const AdminVideo: React.FC = () => {
   };
 
   useEffect(() => {
-    fetchVideos();
-  }, []);
+    const role = localStorage.getItem('role');
+    if (role !== 'ADMIN') {
+      toast.error('You are not authorized to access this page.');
+      navigate('/login');
+    }else{
+      fetchVideos()
+    }
+  }, [navigate]);
 
   return (
     <div className="container mx-auto px-4 py-8">

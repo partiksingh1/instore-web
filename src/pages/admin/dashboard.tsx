@@ -1,12 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-
+import { toast } from 'react-toastify';
 const AdminDashboard: React.FC = () => {
   const navigate = useNavigate();
 
   const navigateTo = (path: string) => {
     navigate(path);
   };
+  useEffect(() => {
+    const role = localStorage.getItem('role');
+    if (role !== 'ADMIN') {
+      toast.error('You are not authorized to access this page.');
+      navigate('/login');
+    }
+  }, [navigate]);
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">

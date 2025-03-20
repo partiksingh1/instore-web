@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from 'react-router-dom';
 
 // Type for Store Window
 interface StoreWindow {
@@ -16,6 +17,7 @@ const AdminStoreWindow = () => {
   const [storeWindows, setStoreWindows] = useState<StoreWindow[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [creating, setCreating] = useState<boolean>(false);
+  const navigate = useNavigate();
   const [deleting, setDeleting] = useState<boolean>(false);
   const [newStoreWindow, setNewStoreWindow] = useState({
     title: '',
@@ -87,6 +89,14 @@ const AdminStoreWindow = () => {
       setShowDeleteModal(false);
     }
   };
+
+  useEffect(() => {
+    const role = localStorage.getItem('role');
+    if (role !== 'ADMIN') {
+      toast.error('You are not authorized to access this page.');
+      navigate('/login');
+    }
+  }, [navigate]);
 
   return (
     <div className="max-w-7xl mx-auto p-6">

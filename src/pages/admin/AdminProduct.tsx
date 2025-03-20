@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const AdminProductPage: React.FC = () => {
   const [products, setProducts] = useState<any[]>([]);
@@ -9,15 +10,9 @@ const AdminProductPage: React.FC = () => {
   const [deleteId, setDeleteId] = useState<number | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [selectedCategoryName, setSelectedCategoryName] = useState<string | null>(null);
-
+  const navigate = useNavigate();
   const [productName, setProductName] = useState<string>("");
   const [, setCategoryId] = useState<number | null>(null);
-
-  // Fetch categories on page load
-  useEffect(() => {
-    fetchCategories();
-  }, []);
-
   // Fetch products whenever selected category changes
   useEffect(() => {
     if (selectedCategoryName) {
@@ -100,7 +95,17 @@ const AdminProductPage: React.FC = () => {
       }
     }
   };
-
+  useEffect(() => {
+    // Check if the user has the 'ADMIN' role
+    const role = localStorage.getItem('role');
+    if (role !== 'ADMIN') {
+      // If the user is not an admin, redirect them to the login page (or any other page)
+      toast.error('You are not authorized to access this page.');
+      navigate('/login');
+    } else {
+      fetchCategories();
+    }
+  }, [navigate]);
   return (
     <div className="container mx-auto p-6">
       <h2 className="text-3xl font-bold text-center mb-6">Manage Products</h2>

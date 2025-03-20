@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useForm, useFieldArray } from 'react-hook-form';
 import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
 type Content = { title: string; description: string };
 type NewsletterForm = {
@@ -126,7 +127,7 @@ const AdminNewsLetter: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [language, setLanguage] = useState<string>(''); // Changed to hold a single language
   const [isTranslating, setIsTranslating] = useState(false);
-
+  const navigate = useNavigate();
   const handleLanguageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setLanguage(e.target.value); // Set the selected language
   };
@@ -205,6 +206,17 @@ const AdminNewsLetter: React.FC = () => {
       setIsTranslating(false);
     }
   };
+  useEffect(() => {
+    // Check if the user has the 'ADMIN' role
+    const role = localStorage.getItem('role');
+    if (role !== 'ADMIN') {
+      // If the user is not an admin, redirect them to the login page (or any other page)
+      toast.error('You are not authorized to access this page.');
+      navigate('/login');
+    } else {
+      fetchNewsletters();
+    }
+  }, [navigate]);
 
   return (
     <div className="max-w-4xl mx-auto p-8">

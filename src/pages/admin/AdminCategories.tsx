@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify"; // Import toast from react-toastify
+import { useNavigate } from "react-router-dom";
 
 // Define Types
 interface Category {
@@ -15,6 +16,7 @@ const CategoriesPage: React.FC = () => {
   const [showConfirmation, setShowConfirmation] = useState<boolean>(false);
   const [confirmAction, setConfirmAction] = useState<"create" | "delete" | null>(null);
   const [categoryToDelete, setCategoryToDelete] = useState<number | null>(null);
+  const navigate = useNavigate();
 
   // Fetch categories from the API
   const fetchCategories = async () => {
@@ -89,6 +91,17 @@ const CategoriesPage: React.FC = () => {
   useEffect(() => {
     fetchCategories();
   }, []);
+  useEffect(() => {
+    // Check if the user has the 'ADMIN' role
+    const role = localStorage.getItem('role');
+    if (role !== 'ADMIN') {
+      // If the user is not an admin, redirect them to the login page (or any other page)
+      toast.error('You are not authorized to access this page.');
+      navigate('/login');
+    } else {
+      fetchCategories();
+    }
+  }, [navigate]);
 
   return (
     <div className="max-w-4xl mx-auto p-8">

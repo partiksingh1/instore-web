@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import { useNavigate } from 'react-router-dom';
 interface Ad {
   id: number;
   title: string;
@@ -28,6 +28,7 @@ const AdminAds = () => {
   const [loading, setLoading] = useState(false);  // For general loading state
   const [creatingAd, setCreatingAd] = useState(false);  // While creating a new ad
   const [deletingAd, setDeletingAd] = useState(false);  // While deleting an ad
+  const navigate = useNavigate();
 
   // Fetch ads from the API
   const fetchAds = async () => {
@@ -105,6 +106,18 @@ const AdminAds = () => {
   useEffect(() => {
     fetchAds();
   }, []);
+  useEffect(() => {
+    // Check if the user has the 'ADMIN' role
+    const role = localStorage.getItem('role');
+    if (role !== 'ADMIN') {
+      // If the user is not an admin, redirect them to the login page (or any other page)
+      toast.error('You are not authorized to access this page.');
+      navigate('/login');
+    } else {
+      // Fetch ads if the user is an admin
+      fetchAds();
+    }
+  }, [navigate]);
 
   return (
     <div className="max-w-4xl mx-auto p-6">

@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from "react-router-dom";
 const AdminAddStore = () => {
   const countries = [
     "afghanistan",
@@ -236,6 +237,7 @@ const AdminAddStore = () => {
   const [categories, setCategories] = useState([] as { id: number; name: string }[]);
   const [loading, setLoading] = useState(false);
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
+  const navigate = useNavigate();
    // Fetch unverified stores
    useEffect(() => {
     const fetchUnverifiedStores = async () => {
@@ -347,6 +349,13 @@ const AdminAddStore = () => {
   const handleCloseConfirmationModal = () => {
     setShowConfirmationModal(false);
   };
+  useEffect(() => {
+    const role = localStorage.getItem('role');
+    if (role !== 'ADMIN') {
+      toast.error('You are not authorized to access this page.');
+      navigate('/login');
+    }
+  }, [navigate]);
 
   return (
     <div className="min-h-screen flex flex-col items-center text-black">
