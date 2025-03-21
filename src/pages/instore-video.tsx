@@ -93,7 +93,7 @@ const InstoreVideo = () => {
         <StylizedNav />
         <Socials />
 
-        <h1 className="text-4xl sm:text-4xl md:text-5xl font-bold text-center ">INSTORE VIDEO</h1>
+        <h1 className="text-4xl sm:text-4xl md:text-5xl font-bold text-center -mt-10">INSTORE VIDEO</h1>
 
         <div className="relative">
           <div
@@ -184,7 +184,7 @@ const InstoreVideo = () => {
                       >
                         Your browser does not support the video tag.
                       </video>
-                      <p className="text-md  text-center truncate m-3">{video.logoUrl}</p>
+                      <p className="text-md  text-center break-words m-3">{video.logoUrl}</p>
                     </div>
                   ))}
                 </div>

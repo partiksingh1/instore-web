@@ -202,9 +202,11 @@ const AdminVideo: React.FC = () => {
                   >
                     {video.title}
                   </a>
-                  <p className='m-2'>
-                    {video.logoUrl}
-                  </p>
+                  <p className="m-2 max-w-full break-words">
+  {video.logoUrl}
+</p>
+
+
                   <button
                     onClick={() => {
                       setVideoToDelete(video.id);
