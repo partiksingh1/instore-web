@@ -7,11 +7,13 @@ import { useNavigate } from 'react-router-dom';
 interface VideoFormData {
   title: string;
   video: File | null;
+  logoUrl:string;
 }
 
 interface Video {
   id: number;
   title: string;
+  logoUrl:string
   url: string;
 }
 
@@ -19,6 +21,7 @@ const AdminVideo: React.FC = () => {
   const [videoData, setVideoData] = useState<VideoFormData>({
     title: '',
     video: null,
+    logoUrl:''
   });
   const [loading, setLoading] = useState(false);
   const [fetchLoading, setFetchLoading] = useState(true);
@@ -56,6 +59,7 @@ const AdminVideo: React.FC = () => {
     const formData = new FormData();
     formData.append('video', videoData.video);
     formData.append('title', videoData.title);
+    formData.append('logoUrl', videoData.logoUrl);
 
     try {
       const response = await axios.post(`${import.meta.env.VITE_SOME_KEY}/admin/videos`, formData, {
@@ -63,7 +67,7 @@ const AdminVideo: React.FC = () => {
       });
       setVideos((prev) => [...prev, response.data.video]);
       toast.success('Video uploaded successfully!');
-      setVideoData({ title: '', video: null });
+      setVideoData({ title: '', video: null , logoUrl:''});
     } catch (error) {
       toast.error('Failed to upload video.');
     } finally {
@@ -126,6 +130,16 @@ const AdminVideo: React.FC = () => {
           />
         </div>
         <div>
+          <label className="block text-sm font-medium text-gray-700 mb-2">Content</label>
+          <input
+            type="text"
+            name="logoUrl"
+            value={videoData.logoUrl}
+            onChange={handleInputChange}
+            className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+          />
+        </div>
+        <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">Video File</label>
           <input
             type="file"
@@ -180,21 +194,23 @@ const AdminVideo: React.FC = () => {
                 </div>
 
                 {/* Title and Delete Button */}
-                <div className="flex items-center justify-between">
+                <div className="items-center justify-between">
                   <a
                     href={video.url}
-                    target="_blank"
                     rel="noopener noreferrer"
-                    className="text-blue-600 hover:underline truncate"
+                    className="text-blue-600 hover:underline truncate m-2"
                   >
                     {video.title}
                   </a>
+                  <p className='m-2'>
+                    {video.logoUrl}
+                  </p>
                   <button
                     onClick={() => {
                       setVideoToDelete(video.id);
                       setShowDeleteModal(true);
                     }}
-                    className="py-2 px-4 bg-red-600 text-white rounded-md hover:bg-red-700 transition-colors"
+                    className="py-2 px-4 bg-red-600 text-white rounded-md hover:bg-red-700 transition-colors m-2"
                   >
                     Delete
                   </button>

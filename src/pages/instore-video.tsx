@@ -9,6 +9,7 @@ interface Video {
   id: string;
   title: string;
   url: string;
+  logoUrl :string
 }
 
 const InstoreVideo = () => {
@@ -90,8 +91,8 @@ const InstoreVideo = () => {
     <InstoreVideoLayout>
       <div className="min-h-screen flex flex-col items-center text-black">
         <StylizedNav />
-        <Socials/>
-        
+        <Socials />
+
         <h1 className="text-4xl sm:text-4xl md:text-5xl font-bold text-center ">INSTORE VIDEO</h1>
 
         <div className="relative">
@@ -134,18 +135,18 @@ const InstoreVideo = () => {
             <h2 className="text-3xl font-bold mb-4">Do You Require More Than One Category?</h2>
             <p className="text-base sm:text-lg md:text-xl leading-8 text-black mb-4 font-bold">
               <ul className="list-disc pl-5 text-lg sm:text-xl">
-                <li><a  className="text-blue-500 hover:underline">PHONES & PC & AUDIO & VIDEO GAMES & TECH & MERCHANDISE & TCG</a></li>
+                <li><a className="text-blue-500 hover:underline">PHONES & PC & AUDIO & VIDEO GAMES & TECH & MERCHANDISE & TCG</a></li>
                 <li><a className="text-blue-500 hover:underline">PHONES & PC & AUDIO & VIDEO GAMES & TECH</a></li>
                 <li><a className="text-blue-500 hover:underline">PHONES & PC & AUDIO & VIDEO GAMES</a></li>
                 <li><a className="text-blue-500 hover:underline">PHONES & PC</a></li>
                 <li><a className="text-blue-500 hover:underline">PHONES & PC & VIDEO GAMES</a></li>
                 <li><a className="text-blue-500 hover:underline">PC & VIDEO GAMES</a></li>
-                <li><a  className="text-blue-500 hover:underline">PC & AUDIO</a></li>
-                <li><a  className="text-blue-500 hover:underline">PC & AUDIO & VIDEO GAMES</a></li>
-                <li><a  className="text-blue-500 hover:underline">VIDEO GAMES & MERCHANDISE</a></li>
-                <li><a  className="text-blue-500 hover:underline">VIDEO GAMES & MERCHANDISE & TCG</a></li>
-                <li><a  className="text-blue-500 hover:underline">VIDEO GAMES & TCG</a></li>
-                <li><a  className="text-blue-500 hover:underline">MERCHANDISE & TCG</a></li>
+                <li><a className="text-blue-500 hover:underline">PC & AUDIO</a></li>
+                <li><a className="text-blue-500 hover:underline">PC & AUDIO & VIDEO GAMES</a></li>
+                <li><a className="text-blue-500 hover:underline">VIDEO GAMES & MERCHANDISE</a></li>
+                <li><a className="text-blue-500 hover:underline">VIDEO GAMES & MERCHANDISE & TCG</a></li>
+                <li><a className="text-blue-500 hover:underline">VIDEO GAMES & TCG</a></li>
+                <li><a className="text-blue-500 hover:underline">MERCHANDISE & TCG</a></li>
               </ul>
             </p>
             <p className="mt-6 text-lg sm:text-xl md:text-2xl">
@@ -161,32 +162,32 @@ const InstoreVideo = () => {
               <div>
                 <label className="block mb-2 text-lg font-semibold text-gray-700">Select video:</label>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-h-96 overflow-y-auto p-2 bg-gray-50 rounded-lg">
-  {videos.map((video) => (
-    <div
-      key={video.id}
-      onClick={() => handleVideoSelect(video.url)}
-      className={`cursor-pointer p-3 border rounded-lg transition-all duration-200 ${
-        selectedVideo === video.url
-          ? 'border-blue-500 bg-blue-50 shadow-md'
-          : 'border-gray-200 hover:bg-gray-100 hover:shadow-md'
-      }`}
-    >
-       <video
-                    src={video.url}
-                    controls
-                    className="w-full h-48 object-cover"
-                    preload="metadata"
-                    onError={(e) => {
-                      console.error(`Failed to load video: ${video.url}`);
-                      e.currentTarget.nextElementSibling?.classList.remove('hidden'); // Show fallback
-                    }}
-                  >
-                    Your browser does not support the video tag.
-                  </video>
-      <p className="text-sm text-gray-600 text-center truncate">{video.title}</p>
-    </div>
-  ))}
-</div>
+                  {videos.map((video) => (
+                    <div
+                      key={video.id}
+                      onClick={() => handleVideoSelect(video.url)}
+                      className={`cursor-pointer p-3 border rounded-lg transition-all duration-200 ${selectedVideo === video.url
+                          ? 'border-blue-500 bg-blue-50 shadow-md'
+                          : 'border-gray-200 hover:bg-gray-100 hover:shadow-md'
+                        }`}
+                    >
+                   <p className="text-lg text-center truncate m-3">{video.title}</p>
+                      <video
+                        src={video.url}
+                        controls
+                        className="w-full h-48 object-cover"
+                        preload="metadata"
+                        onError={(e) => {
+                          console.error(`Failed to load video: ${video.url}`);
+                          e.currentTarget.nextElementSibling?.classList.remove('hidden'); // Show fallback
+                        }}
+                      >
+                        Your browser does not support the video tag.
+                      </video>
+                      <p className="text-md  text-center truncate m-3">{video.logoUrl}</p>
+                    </div>
+                  ))}
+                </div>
               </div>
 
               <div>
@@ -215,7 +216,7 @@ const InstoreVideo = () => {
           </div>
         </div>
 
-        <AdsSection numOfAds={3} position="homepage"/>
+        <AdsSection numOfAds={3} position="homepage" />
       </div>
     </InstoreVideoLayout>
   );
