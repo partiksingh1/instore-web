@@ -134,18 +134,18 @@ const InstoreVideo = () => {
             <h2 className="text-3xl font-bold mb-4">Do You Require More Than One Category?</h2>
             <p className="text-base sm:text-lg md:text-xl leading-8 text-black mb-4 font-bold">
               <ul className="list-disc pl-5 text-lg sm:text-xl">
-                <li><a href="/phones-pc-audio-video-games-tech-merchandise-tcg" className="text-blue-500 hover:underline">PHONES & PC & AUDIO & VIDEO GAMES & TECH & MERCHANDISE & TCG</a></li>
-                <li><a href="/phones-pc-audio-video-games-tech" className="text-blue-500 hover:underline">PHONES & PC & AUDIO & VIDEO GAMES & TECH</a></li>
-                <li><a href="/phones-pc-audio-video-games" className="text-blue-500 hover:underline">PHONES & PC & AUDIO & VIDEO GAMES</a></li>
-                <li><a href="/phones-pc" className="text-blue-500 hover:underline">PHONES & PC</a></li>
-                <li><a href="/phones-pc-video-games" className="text-blue-500 hover:underline">PHONES & PC & VIDEO GAMES</a></li>
-                <li><a href="/pc-video-games" className="text-blue-500 hover:underline">PC & VIDEO GAMES</a></li>
-                <li><a href="/pc-audio" className="text-blue-500 hover:underline">PC & AUDIO</a></li>
-                <li><a href="/pc-audio-video-games" className="text-blue-500 hover:underline">PC & AUDIO & VIDEO GAMES</a></li>
-                <li><a href="/video-games-merchandise" className="text-blue-500 hover:underline">VIDEO GAMES & MERCHANDISE</a></li>
-                <li><a href="/video-games-merchandise-tcg" className="text-blue-500 hover:underline">VIDEO GAMES & MERCHANDISE & TCG</a></li>
-                <li><a href="/video-games-tcg" className="text-blue-500 hover:underline">VIDEO GAMES & TCG</a></li>
-                <li><a href="/merchandise-tcg" className="text-blue-500 hover:underline">MERCHANDISE & TCG</a></li>
+                <li><a  className="text-blue-500 hover:underline">PHONES & PC & AUDIO & VIDEO GAMES & TECH & MERCHANDISE & TCG</a></li>
+                <li><a className="text-blue-500 hover:underline">PHONES & PC & AUDIO & VIDEO GAMES & TECH</a></li>
+                <li><a className="text-blue-500 hover:underline">PHONES & PC & AUDIO & VIDEO GAMES</a></li>
+                <li><a className="text-blue-500 hover:underline">PHONES & PC</a></li>
+                <li><a className="text-blue-500 hover:underline">PHONES & PC & VIDEO GAMES</a></li>
+                <li><a className="text-blue-500 hover:underline">PC & VIDEO GAMES</a></li>
+                <li><a  className="text-blue-500 hover:underline">PC & AUDIO</a></li>
+                <li><a  className="text-blue-500 hover:underline">PC & AUDIO & VIDEO GAMES</a></li>
+                <li><a  className="text-blue-500 hover:underline">VIDEO GAMES & MERCHANDISE</a></li>
+                <li><a  className="text-blue-500 hover:underline">VIDEO GAMES & MERCHANDISE & TCG</a></li>
+                <li><a  className="text-blue-500 hover:underline">VIDEO GAMES & TCG</a></li>
+                <li><a  className="text-blue-500 hover:underline">MERCHANDISE & TCG</a></li>
               </ul>
             </p>
             <p className="mt-6 text-lg sm:text-xl md:text-2xl">
