@@ -154,6 +154,51 @@ const InstoreVideo = () => {
             </p>
           </div>
         </div>
+         {/* Instruction Section */}
+         <div className="w-full max-w-4xl p-8 mt-10 rounded-xl">
+          <h2 className="text-3xl font-bold mb-6 text-center">How to Use In-Store Video</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-6">
+            {/* Step 1 */}
+            <div className="bg-white p-6 rounded-lg shadow-md border border-gray-200">
+              <h3 className="text-xl font-semibold mb-4">1. SELECT A VIDEO</h3>
+              <p className="text-base text-gray-700">
+                We have a huge range of videos to choose from that are perfect for in-store displays. Browse through our library and pick the one that suits your needs.
+              </p>
+                            {/* Add images for logo examples */}
+                            <div className="flex justify-center mt-4">
+                <img src="/logoDemo2.png" alt="Example 1" className="p-2 object-contain" />
+              </div>
+            </div>
+
+            {/* Step 2 */}
+            <div className="bg-white p-6 rounded-lg shadow-md border">
+              <h3 className="text-xl font-semibold mb-4">2. PREPARE AND UPLOAD YOUR LOGO</h3>
+              <p className="text-base text-gray-700">
+                We recommend using a PNG file with a transparent background for the best results.There are many free tools online (including Adobe) if you need help creating your logo. Here are some examples:
+              </p>
+              {/* Add images for logo examples */}
+              <div className="flex justify-center mt-4">
+                <img src="/logoDemo1.png" alt="Example 2" className="p-2 object-contain" />
+              </div>
+            </div>
+
+            {/* Step 3 */}
+            <div className="bg-white p-6 rounded-lg shadow-md border border-gray-200">
+              <h3 className="text-xl font-semibold mb-4">3. WAIT FOR THE VIDEO TO PROCESS</h3>
+              <p className="text-base text-gray-700">
+              The videos are made to a high standard and have a long running time. Please be patient and wait for the video to process. It's no different to waiting for YouTube videos to prcoess after they have been uploaded.
+              </p>
+            </div>
+
+            {/* Step 4 */}
+            <div className="bg-white p-6 rounded-lg shadow-md border border-gray-200">
+              <h3 className="text-xl font-semibold mb-4">4. VIDEO DOWNLOADS AUTOMATICALLY</h3>
+              <p className="text-base text-gray-700">
+              Once your video has finished processing it will automatically download to your device and will be ready for use.
+              </p>
+            </div>
+          </div>
+        </div>
 
         <div className="flex items-center justify-center px-4 mt-8 md:mt-8 sm:px-8 md:px-12">
           <div className="p-6 w-full max-w-4xl bg-white rounded-xl shadow-lg">
