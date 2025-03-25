@@ -106,7 +106,7 @@ const Stores = () => {
           </div>
         </div>
 
-        <AdsSection numOfAds={3} position="homepage"/>
+        <AdsSection numOfAds={6} position="homepage"/>
       </div>
     </StoresLayout>
   );

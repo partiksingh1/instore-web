@@ -5,6 +5,7 @@ import PhonesLayout from "@/layouts/phonesLayout";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import Socials from "@/components/Socials";
+import AdsSection from "@/components/homepage/AdsSection";
 
 const Phones = () => {
   const { category } = useParams();
@@ -80,11 +81,7 @@ const Phones = () => {
           </div>
         </div>
         <div className="flex justify-center mb-10">
-          <img
-            src="/adbanner1.png"
-            alt="Latest"
-            className="w-32 md:w-3/4 h-auto"
-          />
+        <AdsSection numOfAds={6} position="homepage"/>
         </div>
       </div>
     </PhonesLayout>

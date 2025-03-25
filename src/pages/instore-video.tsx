@@ -9,7 +9,7 @@ interface Video {
   id: string;
   title: string;
   url: string;
-  logoUrl :string
+  logoUrl: string
 }
 
 const InstoreVideo = () => {
@@ -93,24 +93,24 @@ const InstoreVideo = () => {
         <StylizedNav />
         <Socials />
         <div className="flex justify-center items-center mt-4 md:-mt-4 w-3/4">
-  <img
-    src="/instore-video-bg1.png"
-    alt="Left Image"
-    className="w-32 md:w-1/4 h-auto"
-  />
-  
-  <img
-    src="/adbanner1.png"
-    alt="Latest"
-    className="w-32 md:w-3/4 h-auto mx-4"
-  />
-  
-  <img
-    src="/instore-video-bg1.png"
-    alt="Right Image"
-    className="w-32 md:w-1/4 h-auto"
-  />
-</div>
+          <img
+            src="/instore-video-bg1.png"
+            alt="Left Image"
+            className="w-32 md:w-1/4 h-auto"
+          />
+
+          <img
+            src="/adbanner1.png"
+            alt="Latest"
+            className="w-32 md:w-3/4 h-auto mx-4"
+          />
+
+          <img
+            src="/instore-video-bg1.png"
+            alt="Right Image"
+            className="w-32 md:w-1/4 h-auto"
+          />
+        </div>
 
 
         <h1 className="text-4xl sm:text-4xl md:text-5xl font-bold text-center mt-3">IN-STORE VIDEO</h1>
@@ -118,13 +118,13 @@ const InstoreVideo = () => {
         <div className="relative">
           <div className="relative z-10 text-center mt-10 m-2">
             <p className="text-base sm:text-lg md:text-xl leading-8 text-black mb-4 font-semibold">
-            You’re now just a few clicks away from having your own personalised in-store video.
+              You’re now just a few clicks away from having your own personalised in-store video.
             </p>
             <p className='text-base sm:text-lg md:text-xl leading-8 text-black mb-4 font-semibold'>
-            Our videos will play on any device and are suitable for a family audience. There is no violent, or sexual content and no language which might cause offence. They are made to full high quality television broadcast standard
+              Our videos will play on any device and are suitable for a family audience. There is no violent, or sexual content and no language which might cause offence. They are made to full high quality television broadcast standard
             </p>
             <p className="text-base sm:text-lg md:text-xl leading-8 text-black mb-4 font-semibold">
-            Here is a simple, step-by-step guide to obtaining your in-store video
+              Here is a simple, step-by-step guide to obtaining your in-store video
             </p>
           </div>
         </div>
@@ -142,11 +142,11 @@ const InstoreVideo = () => {
                       key={video.id}
                       onClick={() => handleVideoSelect(video.url)}
                       className={`cursor-pointer p-3 border rounded-lg transition-all duration-200 ${selectedVideo === video.url
-                          ? 'border-blue-500 bg-blue-50 shadow-md'
-                          : 'border-gray-200 hover:bg-gray-100 hover:shadow-md'
+                        ? 'border-blue-500 bg-blue-50 shadow-md'
+                        : 'border-gray-200 hover:bg-gray-100 hover:shadow-md'
                         }`}
                     >
-                   <p className="text-lg text-center truncate m-3">{video.title}</p>
+                      <p className="text-lg text-center truncate m-3">{video.title}</p>
                       <video
                         src={video.url}
                         controls
@@ -166,77 +166,77 @@ const InstoreVideo = () => {
               </div>
 
               <div>
-  <label className="block mb-2 text-2xl font-extrabold text-center">2. PREPARE AND UPLOAD YOUR LOGO</label>
-  
-  <p className="text-lg leading-8 text-black mb-4 font-semibold text-center">
-    We recommend using a PNG file with a transparent background for the best results. 
-    There are many free tools online (including Adobe) if you need help creating your logo. 
-  </p>
-  <p className='text-center'>Here are some examples:</p>
+                <label className="block mb-2 text-2xl font-extrabold text-center">2. PREPARE AND UPLOAD YOUR LOGO</label>
 
-  <div className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-2 gap-4 mt-4">
-    {/* Logo Example 1 */}
-    <div className="flex flex-col items-center w-1/2 ml-24">
-      <img src="/logoDemo1.png" alt="Logo Example 1" className="p-2 object-contain" />
-      <p className="text-center text-sm">WIDTH:1829 PIXELS x HEIGHT:564 PIXELS</p>
-    </div>
-    
-    {/* Logo Example 2 */}
-    <div className="flex flex-col items-center">
-      <img src="/logoDemo2.png" alt="Logo Example 2" className="p-2 object-contain" />
-    </div>
-    {/* Logo Example 1 */}
-    <div className="flex flex-col items-center w-1/2 ml-24">
-      <img src="/logoDemo1.png" alt="Logo Example 1" className="p-2 object-contain" />
-      <p className="text-center text-sm">WIDTH:4122 PIXELS x HEIGHT:1272 PIXELS</p>
-    </div>
-    
-    {/* Logo Example 2 */}
-    <div className="flex flex-col items-center">
-      <img src="/logoDemo7.png" alt="Logo Example 2" className="p-2 object-contain" />
-    </div>
-        {/* Logo Example 1 */}
-        <div className="flex flex-col items-center w-1/2 ml-24">
-      <img src="/logoDemo1.png" alt="Logo Example 1" className="p-2 object-contain" />
-      <p className="text-center text-sm">WIDTH:2748 PIXELS x HEIGHT:848 PIXELS</p>
-    </div>
-    
-    {/* Logo Example 2 */}
-    <div className="flex flex-col items-center">
-      <img src="/logoDemo8.png" alt="Logo Example 2" className="p-2 object-contain" />
-    </div>
+                <p className="text-lg leading-8 text-black mb-4 font-semibold text-center">
+                  We recommend using a PNG file with a transparent background for the best results.
+                  There are many free tools online (including Adobe) if you need help creating your logo.
+                </p>
+                <p className='text-center'>Here are some examples:</p>
 
-    {/* Logo Example 3 */}
-    <div className="flex flex-col items-center w-1/2 ml-24">
-      <img src="/logoDemo3.png" alt="Logo Example 3" className="p-2 object-contain" />
-      <p className="text-center text-sm">WIDTH:1829 PIXELS x HEIGHT:1250 PIXELS</p>
-    </div>
+                <div className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-2 gap-4 mt-4">
+                  {/* Logo Example 1 */}
+                  <div className="flex flex-col items-center w-1/2 ml-24">
+                    <img src="/logoDemo1.png" alt="Logo Example 1" className="p-2 object-contain" />
+                    <p className="text-center text-sm">WIDTH:1829 PIXELS x HEIGHT:564 PIXELS</p>
+                  </div>
 
-    {/* Logo Example 4 */}
-    <div className="flex flex-col items-center">
-      <img src="/logoDemo4.png" alt="Logo Example 4" className="p-2 object-contain" />
-    </div>
+                  {/* Logo Example 2 */}
+                  <div className="flex flex-col items-center">
+                    <img src="/logoDemo2.png" alt="Logo Example 2" className="p-2 object-contain" />
+                  </div>
+                  {/* Logo Example 1 */}
+                  <div className="flex flex-col items-center w-1/2 ml-24">
+                    <img src="/logoDemo1.png" alt="Logo Example 1" className="p-2 object-contain" />
+                    <p className="text-center text-sm">WIDTH:4122 PIXELS x HEIGHT:1272 PIXELS</p>
+                  </div>
 
-    {/* Logo Example 5 */}
-    <div className="flex flex-col items-center w-1/2 ml-24">
-      <img src="/logoDemo5.png" alt="Logo Example 5" className="p-2 object-contain" />
-      <p className="text-center text-sm">WIDTH:2072 PIXELS x HEIGHT:1260 PIXELS</p>
-    </div>
+                  {/* Logo Example 2 */}
+                  <div className="flex flex-col items-center">
+                    <img src="/logoDemo7.png" alt="Logo Example 2" className="p-2 object-contain" />
+                  </div>
+                  {/* Logo Example 1 */}
+                  <div className="flex flex-col items-center w-1/2 ml-24">
+                    <img src="/logoDemo1.png" alt="Logo Example 1" className="p-2 object-contain" />
+                    <p className="text-center text-sm">WIDTH:2748 PIXELS x HEIGHT:848 PIXELS</p>
+                  </div>
 
-    {/* Logo Example 6 */}
-    <div className="flex flex-col items-center">
-      <img src="/logoDemo6.png" alt="Logo Example 6" className="p-2 object-contain" />
-    </div>
-  </div>
+                  {/* Logo Example 2 */}
+                  <div className="flex flex-col items-center">
+                    <img src="/logoDemo8.png" alt="Logo Example 2" className="p-2 object-contain" />
+                  </div>
 
-  <input
-    type="file"
-    accept="image/*"
-    onChange={handleLogoUpload}
-    required
-    className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-50 mt-4"
-  />
-</div>
+                  {/* Logo Example 3 */}
+                  <div className="flex flex-col items-center w-1/2 ml-24">
+                    <img src="/logoDemo3.png" alt="Logo Example 3" className="p-2 object-contain" />
+                    <p className="text-center text-sm">WIDTH:1829 PIXELS x HEIGHT:1250 PIXELS</p>
+                  </div>
+
+                  {/* Logo Example 4 */}
+                  <div className="flex flex-col items-center">
+                    <img src="/logoDemo4.png" alt="Logo Example 4" className="p-2 object-contain" />
+                  </div>
+
+                  {/* Logo Example 5 */}
+                  <div className="flex flex-col items-center w-1/2 ml-24">
+                    <img src="/logoDemo5.png" alt="Logo Example 5" className="p-2 object-contain" />
+                    <p className="text-center text-sm">WIDTH:2072 PIXELS x HEIGHT:1260 PIXELS</p>
+                  </div>
+
+                  {/* Logo Example 6 */}
+                  <div className="flex flex-col items-center">
+                    <img src="/logoDemo6.png" alt="Logo Example 6" className="p-2 object-contain" />
+                  </div>
+                </div>
+
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={handleLogoUpload}
+                  required
+                  className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-50 mt-4"
+                />
+              </div>
 
 
               <div className="flex justify-center">
@@ -262,7 +262,8 @@ const InstoreVideo = () => {
         </div>
 
 
-        <AdsSection numOfAds={3} position="homepage" />
+          <AdsSection numOfAds={6} position="homepage" />
+
       </div>
     </InstoreVideoLayout>
   );

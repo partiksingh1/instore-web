@@ -67,7 +67,7 @@ const Posters = () => {
 
         {/* Ads Section */}
         <div className="mt-10 w-full">
-          <AdsSection numOfAds={3} position="homepage"/>
+          <AdsSection numOfAds={6} position="homepage"/>
         </div>
       </div>
     </PostersLayout>

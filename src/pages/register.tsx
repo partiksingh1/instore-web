@@ -629,7 +629,7 @@ const Register = () => {
           </div>
 
           <div className="mt-24">
-            <AdsSection numOfAds={3} position="homepage"/>
+          <AdsSection numOfAds={6} position="homepage"/>
           </div>
         </div>
       </div>

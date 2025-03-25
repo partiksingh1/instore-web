@@ -126,7 +126,7 @@ const Magazine: React.FC = () => {
         </div>
 
         <div className="mt-6">
-          <AdsSection numOfAds={3} position="homepage"/>
+        <AdsSection numOfAds={6} position="homepage"/>
         </div>
       </div>
     </MagazineLayout>
