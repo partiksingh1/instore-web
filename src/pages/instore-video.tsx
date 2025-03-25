@@ -175,58 +175,52 @@ const InstoreVideo = () => {
                 <p className='text-center'>Here are some examples:</p>
 
                 <div className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-2 gap-4 mt-4">
-                  {/* Logo Example 1 */}
-                  <div className="flex flex-col items-center w-1/2 ml-24">
-                    <img src="/logoDemo1.png" alt="Logo Example 1" className="p-2 object-contain" />
-                    <p className="text-center text-sm">WIDTH:1829 PIXELS x HEIGHT:564 PIXELS</p>
-                  </div>
-
                   {/* Logo Example 2 */}
                   <div className="flex flex-col items-center">
                     <img src="/logoDemo2.png" alt="Logo Example 2" className="p-2 object-contain" />
                   </div>
                   {/* Logo Example 1 */}
-                  <div className="flex flex-col items-center w-1/2 ml-24">
-                    <img src="/logoDemo1.png" alt="Logo Example 1" className="p-2 object-contain" />
-                    <p className="text-center text-sm">WIDTH:4122 PIXELS x HEIGHT:1272 PIXELS</p>
+                  <div className="flex flex-col items-center">
+                    <img src="/logoDemo1.2.png" alt="Logo Example 1" className="p-2 object-contain" />
                   </div>
-
                   {/* Logo Example 2 */}
                   <div className="flex flex-col items-center">
                     <img src="/logoDemo7.png" alt="Logo Example 2" className="p-2 object-contain" />
                   </div>
                   {/* Logo Example 1 */}
-                  <div className="flex flex-col items-center w-1/2 ml-24">
+                  <div className="flex flex-col items-center">
                     <img src="/logoDemo1.png" alt="Logo Example 1" className="p-2 object-contain" />
-                    <p className="text-center text-sm">WIDTH:2748 PIXELS x HEIGHT:848 PIXELS</p>
                   </div>
-
                   {/* Logo Example 2 */}
                   <div className="flex flex-col items-center">
                     <img src="/logoDemo8.png" alt="Logo Example 2" className="p-2 object-contain" />
                   </div>
 
-                  {/* Logo Example 3 */}
-                  <div className="flex flex-col items-center w-1/2 ml-24">
-                    <img src="/logoDemo3.png" alt="Logo Example 3" className="p-2 object-contain" />
-                    <p className="text-center text-sm">WIDTH:1829 PIXELS x HEIGHT:1250 PIXELS</p>
+                  {/* Logo Example 1 */}
+                  <div className="flex flex-col items-center">
+                    <img src="/logoDemo1.3.jpg" alt="Logo Example 1" className="p-2 object-contain" />
                   </div>
-
                   {/* Logo Example 4 */}
                   <div className="flex flex-col items-center">
                     <img src="/logoDemo4.png" alt="Logo Example 4" className="p-2 object-contain" />
                   </div>
 
-                  {/* Logo Example 5 */}
-                  <div className="flex flex-col items-center w-1/2 ml-24">
-                    <img src="/logoDemo5.png" alt="Logo Example 5" className="p-2 object-contain" />
-                    <p className="text-center text-sm">WIDTH:2072 PIXELS x HEIGHT:1260 PIXELS</p>
+
+                  {/* Logo Example 3 */}
+                  <div className="flex flex-col items-center">
+                    <img src="/logoDemo3.png" alt="Logo Example 3" className="p-2 object-contain" />
                   </div>
 
                   {/* Logo Example 6 */}
                   <div className="flex flex-col items-center">
                     <img src="/logoDemo6.png" alt="Logo Example 6" className="p-2 object-contain" />
                   </div>
+
+                  {/* Logo Example 5 */}
+                  <div className="flex flex-col items-center">
+                    <img src="/logoDemo5.png" alt="Logo Example 5" className="p-2 object-contain" />
+                  </div>
+
                 </div>
 
                 <input
@@ -262,7 +256,7 @@ const InstoreVideo = () => {
         </div>
 
 
-          <AdsSection numOfAds={6} position="homepage" />
+        <AdsSection numOfAds={6} position="homepage" />
 
       </div>
     </InstoreVideoLayout>
