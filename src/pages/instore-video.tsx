@@ -178,7 +178,7 @@ const InstoreVideo = () => {
     {/* Logo Example 1 */}
     <div className="flex flex-col items-center w-1/2 ml-24">
       <img src="/logoDemo1.png" alt="Logo Example 1" className="p-2 object-contain" />
-      <p className="text-center mt-2">WIDTH:4122 x HEIGHT:272</p>
+      <p className="text-center mt-2">WIDTH:4122 x HEIGHT:1272</p>
     </div>
     
     {/* Logo Example 2 */}
@@ -188,7 +188,7 @@ const InstoreVideo = () => {
         {/* Logo Example 1 */}
         <div className="flex flex-col items-center w-1/2 ml-24">
       <img src="/logoDemo1.png" alt="Logo Example 1" className="p-2 object-contain" />
-      <p className="text-center mt-2">WIDTH:4122 x HEIGHT:1272</p>
+      <p className="text-center mt-2">WIDTH:2748 x HEIGHT:848</p>
     </div>
     
     {/* Logo Example 2 */}
