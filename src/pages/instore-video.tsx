@@ -113,7 +113,7 @@ const InstoreVideo = () => {
 </div>
 
 
-        <h1 className="text-4xl sm:text-4xl md:text-5xl font-bold text-center mt-3">INSTORE VIDEO</h1>
+        <h1 className="text-4xl sm:text-4xl md:text-5xl font-bold text-center mt-3">IN-STORE VIDEO</h1>
 
         <div className="relative">
           <div className="relative z-10 text-center mt-10 m-2">
