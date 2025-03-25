@@ -131,7 +131,7 @@ const InstoreVideo = () => {
         <p className='text-2xl font-extrabold text-center mt-4'>1. CLICK AND SELECT YOUR VIDEO</p>
         <p className='text-lg leading-8 text-black mb-4 font-semibold text-center px-20'>We have a huge range of videos to choose from that are perfect for in-store displays. Browse through our library and pick the one that suits your needs.</p>
         <div className="flex items-center justify-center px-4 mt-8 md:mt-8 sm:px-8 md:px-12">
-          <div className="p-6 w-full max-w-4xl bg-white rounded-xl shadow-lg">
+          <div className="p-6 w-full max-w-8xl bg-white rounded-xl shadow-lg">
             {/* <h2 className="text-3xl font-bold text-gray-800 mb-6 text-center">Select video and upload logo</h2> */}
             <form onSubmit={handleProcessVideo} className="space-y-8">
               <div>
@@ -175,48 +175,46 @@ const InstoreVideo = () => {
                 <p className='text-center'>Here are some examples:</p>
 
                 <div className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-2 gap-4 mt-4">
-                  {/* Logo Example 2 */}
                   <div className="flex flex-col items-center">
                     <img src="/logoDemo2.png" alt="Logo Example 2" className="p-2 object-contain" />
                   </div>
-                  {/* Logo Example 1 */}
+                  {/* Logo */}
                   <div className="flex flex-col items-center">
                     <img src="/logoDemo1.2.png" alt="Logo Example 1" className="p-2 object-contain" />
                   </div>
-                  {/* Logo Example 2 */}
+
                   <div className="flex flex-col items-center">
                     <img src="/logoDemo7.png" alt="Logo Example 2" className="p-2 object-contain" />
                   </div>
-                  {/* Logo Example 1 */}
+                  {/* Logo*/}
                   <div className="flex flex-col items-center">
-                    <img src="/logoDemo1.png" alt="Logo Example 1" className="p-2 object-contain" />
+                    <img src="/logoDemo1.3.jpg" alt="Logo Example 1" className="p-2 object-contain" />
                   </div>
-                  {/* Logo Example 2 */}
+
                   <div className="flex flex-col items-center">
                     <img src="/logoDemo8.png" alt="Logo Example 2" className="p-2 object-contain" />
                   </div>
 
-                  {/* Logo Example 1 */}
+                  {/* Logo */}
                   <div className="flex flex-col items-center">
-                    <img src="/logoDemo1.3.jpg" alt="Logo Example 1" className="p-2 object-contain" />
+                    <img src="/logoDemo1.png" alt="Logo Example 1" className="p-2 object-contain" />
                   </div>
-                  {/* Logo Example 4 */}
+ 
                   <div className="flex flex-col items-center">
                     <img src="/logoDemo4.png" alt="Logo Example 4" className="p-2 object-contain" />
                   </div>
 
 
-                  {/* Logo Example 3 */}
+                  {/* Logo  */}
                   <div className="flex flex-col items-center">
                     <img src="/logoDemo3.png" alt="Logo Example 3" className="p-2 object-contain" />
                   </div>
 
-                  {/* Logo Example 6 */}
                   <div className="flex flex-col items-center">
                     <img src="/logoDemo6.png" alt="Logo Example 6" className="p-2 object-contain" />
                   </div>
 
-                  {/* Logo Example 5 */}
+                  {/* Logo */}
                   <div className="flex flex-col items-center">
                     <img src="/logoDemo5.png" alt="Logo Example 5" className="p-2 object-contain" />
                   </div>
