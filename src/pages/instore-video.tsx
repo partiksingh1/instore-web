@@ -180,7 +180,7 @@ const InstoreVideo = () => {
                   </div>
                   {/* Logo */}
                   <div className="flex flex-col items-center">
-                    <img src="/logoDemo1.2.png" alt="Logo Example 1" className=" object-contain max-w-xl" />
+                    <img src="/logoDemo1.2.png" alt="Logo Example 1" className="p-2 -mt-5 object-contain max-w-xl" />
                   </div>
 
                   <div className="flex flex-col items-center">
@@ -188,7 +188,7 @@ const InstoreVideo = () => {
                   </div>
                   {/* Logo*/}
                   <div className="flex flex-col items-center">
-                    <img src="/logoDemo1.3.png" alt="Logo Example 1" className="object-contain max-w-xl" />
+                    <img src="/logoDemo1.3.png" alt="Logo Example 1" className="p-2 -mt-2 object-contain max-w-xl" />
                   </div>
 
                   <div className="flex flex-col items-center">
@@ -197,7 +197,7 @@ const InstoreVideo = () => {
 
                   {/* Logo */}
                   <div className="flex flex-col items-center">
-                    <img src="/logoDemo1.png" alt="Logo Example 1" className="object-contain max-w-xl" />
+                    <img src="/logoDemo1.png" alt="Logo Example 1" className="p-2 -mt-2 object-contain max-w-xl" />
                   </div>
  
                   <div className="flex flex-col items-center">
@@ -207,7 +207,7 @@ const InstoreVideo = () => {
 
                   {/* Logo  */}
                   <div className="flex flex-col items-center">
-                    <img src="/logoDemo3.png" alt="Logo Example 3" className="object-contain max-w-xl" />
+                    <img src="/logoDemo3.png" alt="Logo Example 3" className="p-2 -mt-2 object-contain max-w-xl" />
                   </div>
 
                   <div className="flex flex-col items-center">
@@ -216,7 +216,7 @@ const InstoreVideo = () => {
 
                   {/* Logo */}
                   <div className="flex flex-col items-center">
-                    <img src="/logoDemo5.png" alt="Logo Example 5" className="object-contain max-w-xl" />
+                    <img src="/logoDemo5.png" alt="Logo Example 5" className="p-2 -mt-2 object-contain max-w-xl" />
                   </div>
 
                 </div>
