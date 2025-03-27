@@ -135,7 +135,7 @@ const InstoreVideo = () => {
             {/* <h2 className="text-3xl font-bold text-gray-800 mb-6 text-center">Select video and upload logo</h2> */}
             <form onSubmit={handleProcessVideo} className="space-y-8">
               <div>
-                <label className="block mb-2 text-lg font-semibold text-gray-700 text-center -mt-12">Select video:</label>
+                <label className="block mb-4 text-lg font-semibold text-gray-700 text-center -mt-16">Select video:</label>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-h-96 overflow-y-auto p-2 bg-gray-50 rounded-lg">
                   {videos.map((video) => (
                     <div
