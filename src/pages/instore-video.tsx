@@ -118,7 +118,7 @@ const InstoreVideo = () => {
         <div className="relative">
           <div className="relative z-10 text-center m-2">
             <p className="text-base sm:text-lg md:text-xl leading-8 text-black mb-4 font-semibold">
-              You’re now just a few clicks away from having your own personalised in-store video.This will be a long-playable high quality production which will have your own store logo featured in the top right-hand corner of the screen. On completion of ptocessing, the video will automatically download to your device.
+              You’re now just a few clicks away from having your own personalised in-store video.This will be a long-playable high quality production which will have your own store logo featured in the top right-hand corner of the screen. On completion of processing, the video will automatically download to your device.
             </p>
             <p className='text-base sm:text-lg md:text-xl leading-8 text-black mb-4 font-semibold'>
               Our videos will play on any device and are suitable for a family audience. There is no violent, or sexual content and no language which might cause offence. They are made to full high quality television broadcast standard.
