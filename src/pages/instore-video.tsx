@@ -69,7 +69,7 @@ const InstoreVideo = () => {
 
       const link = document.createElement('a');
       link.href = videoUrl;
-      link.download = 'processed_video.mp4';
+      link.download = 'IN-STORE VIDEO.mp4';
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
@@ -116,15 +116,15 @@ const InstoreVideo = () => {
         <h1 className="text-4xl sm:text-4xl md:text-5xl font-bold text-center mt-3">IN-STORE VIDEO</h1>
 
         <div className="relative">
-          <div className="relative z-10 text-center mt-10 m-2">
+          <div className="relative z-10 text-center m-2">
             <p className="text-base sm:text-lg md:text-xl leading-8 text-black mb-4 font-semibold">
-              You’re now just a few clicks away from having your own personalised in-store video.
+              You’re now just a few clicks away from having your own personalised in-store video.This will be a long-playable high quality production which will have your own store logo featured in the top right-hand corner of the screen. On completion of ptocessing, the video will automatically download to your device.
             </p>
             <p className='text-base sm:text-lg md:text-xl leading-8 text-black mb-4 font-semibold'>
-              Our videos will play on any device and are suitable for a family audience. There is no violent, or sexual content and no language which might cause offence. They are made to full high quality television broadcast standard
+              Our videos will play on any device and are suitable for a family audience. There is no violent, or sexual content and no language which might cause offence. They are made to full high quality television broadcast standard.
             </p>
             <p className="text-base sm:text-lg md:text-xl leading-8 text-black mb-4 font-semibold">
-              Here is a simple, step-by-step guide to obtaining your in-store video
+              Here is a simple, step-by-step guide to obtaining your in-store video.
             </p>
           </div>
         </div>
@@ -135,7 +135,7 @@ const InstoreVideo = () => {
             {/* <h2 className="text-3xl font-bold text-gray-800 mb-6 text-center">Select video and upload logo</h2> */}
             <form onSubmit={handleProcessVideo} className="space-y-8">
               <div>
-                <label className="block mb-2 text-lg font-semibold text-gray-700 text-center">Select video:</label>
+                <label className="block mb-2 text-lg font-semibold text-gray-700 text-center -mt-12">Select video:</label>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-h-96 overflow-y-auto p-2 bg-gray-50 rounded-lg">
                   {videos.map((video) => (
                     <div
@@ -171,9 +171,8 @@ const InstoreVideo = () => {
                 <p className="text-lg leading-8 text-black mb-4 font-semibold text-center">
                   We recommend using a PNG file with a transparent background for the best results.
                   There are many free tools online (including Adobe) if you need help creating your logo.
+                  Below you will see some screenshots showing a sample logo with different sizes and how it will look on a finished video.
                 </p>
-                <p className='text-center'>Here are some examples:</p>
-
                 <div className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-2 gap-4 mt-4">
                   <div className="flex flex-col items-center">
                     <img src="/logoDemo2.png" alt="Logo Example 2" className="p-2 object-contain" />
@@ -228,6 +227,19 @@ const InstoreVideo = () => {
                   required
                   className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-50 mt-4"
                 />
+              </div>
+
+              <div>
+                <label className="block mb-2 text-2xl font-extrabold text-center">3. PROCESS VIDEO</label>
+
+                <p className="text-lg leading-8 text-black mb-4 font-semibold">
+                - Now click the PROCESS VIDEO to begin video production. Your logo will feature on the entire video from start to finish. <br />
+                - There will be a waiting time as the system generates your video in a similar way that YouTube processes videos after uploading. <br /> 
+                - Your video will automatically download on completion. <br />
+                - You will now have a fully bespoke and cusomised high quality video to run in your store. <br /> 
+                - If you have any queries please email us POSVideo@instorenetwork.com <br />
+                - For best results and performance times we recommend using a laptop or PC/Mac to undertake this process. A mobile phone or tablet is not ideally suitable to undertake this task.
+                </p>
               </div>
 
 
