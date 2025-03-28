@@ -1,4 +1,4 @@
-import { Suspense, lazy, useState, useEffect } from 'react';
+import {lazy } from 'react';
 import { SocialIcon } from 'react-social-icons';
 
 // Lazy load components
@@ -10,21 +10,6 @@ const Footer = lazy(() => import('@/components/Footer'));
 const LatestSection = lazy(() => import('@/components/homepage/LatestSection'));
 
 const HomePage = () => {
-  const [isLoaded, setIsLoaded] = useState(false);
-
-  // Simulate loading completion (replace with actual logic if needed)
-  useEffect(() => {
-    // This assumes all lazy-loaded components resolve within a reasonable time
-    const timer = setTimeout(() => setIsLoaded(true), 1000); // Adjust delay as needed
-    return () => clearTimeout(timer);
-  }, []);
-
-  const LoadingScreen = () => (
-<div className="min-h-screen flex items-center justify-center bg-gray-100">
-  <div className="w-16 h-16 border-4 border-t-4 border-blue-700 border-solid rounded-full animate-spin"></div>
-</div>
-
-  );
 
   const MainContent = () => (
     <div className="min-h-screen relative overflow-hidden">
@@ -137,9 +122,7 @@ const HomePage = () => {
   );
 
   return (
-    <Suspense fallback={<LoadingScreen />}>
-      {isLoaded ? <MainContent /> : <LoadingScreen />}
-    </Suspense>
+      <MainContent />
   );
 };
 
