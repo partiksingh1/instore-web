@@ -55,7 +55,7 @@ const AdminNews: React.FC = () => {
       });
 
       // On success, show success toast and reload the newsletters
-      toast.success("Newsletter created successfully!");
+      toast.success("Latest created successfully!");
       fetchNewsletters(); // Reload newsletters
       reset(); // Reset form fields
     } catch (error) {
@@ -84,7 +84,7 @@ const AdminNews: React.FC = () => {
       try {
         setLoading(true); // Start loading for deletion
         await axios.delete(`${import.meta.env.VITE_SOME_KEY}/admin/latest/${deleteId}`);
-        toast.success("Newsletter deleted successfully.");
+        toast.success("Latest deleted successfully.");
         fetchNewsletters(); // Reload newsletters
       } catch (error) {
         toast.error("Failed to delete newsletter.");

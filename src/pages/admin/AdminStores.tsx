@@ -218,11 +218,13 @@ const AdminAddStore = () => {
     email: "",
     password: "",
     confirmPassword: "",
+    role:"STORE",
     storeDetails: {
       storeName: "",
       phoneNumber: "",
       position: "",
       website: "",
+      role:"STORE",
       facebookPage: "",
       instagramPage: "",
       tiktok: "",

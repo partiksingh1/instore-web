@@ -43,7 +43,16 @@ const LatestSection: React.FC<LatestSectionProps> = ({ numOfNews }) => {
                   className="w-full h-1/4 sm:h-56 md:h-48 lg:h-56 object-cover border-2 border-black"
                 />
                 <div className="mt-2 border-2 border-black bg-white">
-                  <h3 className="text-lg sm:text-xl font-semibold underline">{newsletter.subject}</h3>
+                  {/* Add a click handler to the h3 element to redirect */}
+                  <a
+                    href={newsletter.url} // Redirect to the newsletter URL
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <h3 className="text-lg sm:text-xl font-semibold underline cursor-pointer">
+                      {newsletter.subject}
+                    </h3>
+                  </a>
                   <p className="text-sm sm:text-base text-gray-700">{newsletter.content}</p>
                 </div>
               </div>
