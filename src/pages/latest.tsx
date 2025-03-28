@@ -1,9 +1,11 @@
 import { useState, useEffect, Suspense } from "react";
+import { Link } from "react-router-dom"; // Import Link from react-router
 import StylizedNav from "@/components/homepage/Navbar";
 import AdsSection from "@/components/homepage/AdsSection";
 import LatestLayout from "@/layouts/latestLayout";
 import axios from "axios";
 import Socials from "@/components/Socials";
+
 const Latest = () => {
   const [newsletters, setNewsletters] = useState<any[]>([]); // State to store fetched newsletters
   const [loading, setLoading] = useState<boolean>(true); // Loading state
@@ -32,7 +34,6 @@ const Latest = () => {
         <Socials />
 
         {/* Heading */}
-        {/* <h1 className="text-5xl md:text-5xl font-bold mt-4 md:-mt-12 text-center">LATEST</h1> */}
         <div className="flex justify-center mt-4 md:-mt-12">
           <img
             src="/adbanner1.png"
@@ -62,18 +63,16 @@ const Latest = () => {
                         <div className="h-1/2 p-2 bg-white flex flex-col justify-between border-t-2 border-black">
                           <h3 className="text-lg sm:text-xl font-semibold">{newsletter.subject}</h3>
                           <p className="text-sm sm:text-base text-gray-700 flex-1 overflow-hidden text-ellipsis">{newsletter.content}</p>
-                          <a
-                            href={newsletter.link}
-                            target="_blank"
-                            rel="noopener noreferrer"
+                          {/* Link to the dynamic newsletter page */}
+                          <Link
+                            to={`/admin/latest/${newsletter.id}`} // Link to dynamic page
                             className="text-blue-500 hover:underline"
                           >
                             VIEW MORE
-                          </a>
+                          </Link>
                         </div>
                       </div>
                     </div>
-
                   ))}
                 </div>
               )}
@@ -84,7 +83,7 @@ const Latest = () => {
             {[...Array(4)].map((_, index) => (
               <div key={index} className="mt-12">
                 <Suspense fallback={<div>Loading Ads...</div>}>
-                  <AdsSection numOfAds={1} position='homepage' />
+                  <AdsSection numOfAds={1} position="homepage" />
                 </Suspense>
               </div>
             ))}

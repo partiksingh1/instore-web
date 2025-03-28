@@ -32,6 +32,7 @@ import DynamicCat from './pages/dynamicCat';
 import AdminVideo from './pages/admin/AdminVideos';
 import AdminStoreWindow from './pages/admin/AdminStoreWindow';
 import AdminNewsLetter from './pages/admin/AdminNewsletter';
+import NewsletterPage from './pages/latestPage';
 
 
 const App: React.FC = () => {
@@ -66,6 +67,7 @@ const App: React.FC = () => {
         <Route path="/admin/categories" element={<CategoriesPage/>} />
         <Route path="/admin/ads" element={<AdminAds/>} />
         <Route path="/admin/latest" element={<AdminNews/>} />
+        <Route path="/admin/latest/:id" element={<NewsletterPage/>} />
         <Route path="/admin/products" element={<AdminProductPage/>} />
         <Route path="/admin/videos" element={<AdminVideo/>} />
         <Route path="/admin/store-window" element={<AdminStoreWindow/>} />
