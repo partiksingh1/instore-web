@@ -19,12 +19,12 @@ const Magazine: React.FC = () => {
        <Socials/>
 
         {/* Heading */}
-        <h1 className="text-4xl mt-6 md:-mt-14 sm:text-5xl md:text-6xl font-bold mb-6 text-center">MAGAZINE & BUYER’S GUIDES</h1>
+        <h1 className="text-3xl mt-6 md:-mt-12 sm:text-3xl md:text-5xl font-bold mb-2 text-center">MAGAZINE & BUYER’S GUIDES</h1>
         <h1 className="text-2xl sm:text-3xl font-bold text-center">LATEST ISSUE</h1>
 
 {/* Embed Paperturn Flipbook */}
 <iframe
-  src="https://www.paperturn-view.com/?pid=ODg8872248&bgcolor=transparent&embed=iframe&shadow=1&flipSound=1&hardCover=1"
+  src="https://sfddsf.paperturn-view.com/?pid=ODg8876194&bgcolor=transparent&embed=iframe&shadow=1&flipSound=1&hardCover=1"
   width="100%"
   height="auto"
   allowFullScreen
@@ -125,7 +125,7 @@ const Magazine: React.FC = () => {
           </div>
         </div>
 
-        <div className="mt-6">
+        <div className="">
         <AdsSection numOfAds={6} position="homepage"/>
         </div>
       </div>

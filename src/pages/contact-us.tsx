@@ -14,10 +14,10 @@ const ContactUs = () => {
          <Socials/>
 
           {/* Heading */}
-          <h1 className="text-5xl md:text-6xl font-bold mt-4 md:-mt-14 text-center">CONTACT</h1>
+          <h1 className="text-5xl md:text-6xl font-bold mt-4 md:-mt-12 text-center">CONTACT</h1>
 
           {/* Contact Information Section */}
-          <div className="w-full max-w-4xl mt-6 p-6 sm:p-10 text-center">
+          <div className="w-full max-w-4xl sm:p-10 text-center">
             <div className="space-y-4">
               <p className="text-lg sm:text-xl font-semibold underline">
                 CONTENT, PRESS RELEASE AND EDITORIAL ENQUIRIES TO:

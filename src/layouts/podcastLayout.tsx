@@ -8,7 +8,7 @@ export default function PodcastLayout({
   return (
     <div className="min-h-screen relative">
    <div
-  className="absolute bg-cover bg-center m-5"
+  className="absolute bg-cover bg-center mt-24"
   style={{
     backgroundImage: "url('/podcast.png')",
     width: '100%', // Make sure the width covers the entire area

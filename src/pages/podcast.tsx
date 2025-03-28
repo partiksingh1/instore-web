@@ -10,14 +10,12 @@ const Podcast: React.FC = () => {
             <div className="min-h-screen flex flex-col items-center text-black">
                 <StylizedNav />
                 <Socials/>
-                
 
                 {/* Heading */}
                 <h1 className="text-5xl md:text-5xl font-bold mt-4 md:-mt-12 text-center text-red-700">PODCAST</h1>
-                <div className="relative w-full max-w-8xl text-center p-6 md:mt-8 ">
-                    <div className="relative z-1">
-                        <div className="flex items-center justify-center mb-6">
-                            <p className="text-lg sm:text-2xl font-bold md:mb-14 px-4">
+                <div className="w-full max-w-8xl text-center md:mt-8 ">
+                        <div className="flex items-center justify-center p-6">
+                            <p className="text-md sm:text-2xl font-bold w-3/5">
                                 There's always plenty in store to look forward to in our official podcast.
                             </p>
                         </div>
@@ -27,10 +25,9 @@ const Podcast: React.FC = () => {
                                 With exclusive guests and great topics, we go behind the counter to discuss all the latest trends and topics in the Phone, PC, Tech, Video Games, and TCG retail marketplace
                             </p>
                         </div>
-                    </div>
 
                     {/* Logo and Coming Soon Section */}
-                    <div className="flex items-center justify-center mb-6 flex-wrap gap-4">
+                    <div className="flex items-center justify-center mb-2 flex-wrap gap-4">
                         {/* Left logo */}
                         <img src="/1roundedlogo.svg" alt="Left Logo" className="h-28 w-28 sm:h-36 sm:w-36" />
 
