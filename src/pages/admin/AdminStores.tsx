@@ -214,15 +214,14 @@ const AdminAddStore = () => {
   ]
 
   const initialFormData = {
-    name: "",
+    name: "owner",
     email: "",
-    password: "",
-    confirmPassword: "",
     role:"STORE",
+    password:"testing",
     storeDetails: {
       storeName: "",
       phoneNumber: "",
-      position: "",
+      position: "owner",
       website: "",
       role:"STORE",
       facebookPage: "",
@@ -323,15 +322,11 @@ const AdminAddStore = () => {
   };
 
   const handleSubmit = async () => {
-    if (formData.password !== formData.confirmPassword) {
-      toast.error("Passwords do not match!");
-      return;
-    }
 
     setLoading(true);
 
     try {
-      const response = await axios.post(`${import.meta.env.VITE_SOME_KEY}/auth/register`, formData);
+      const response = await axios.post(`${import.meta.env.VITE_SOME_KEY}/auth/adminRegister`, formData);
       toast.success("Store added successfully!");
       console.log(response.data);
       setFormData(initialFormData);
@@ -373,21 +368,6 @@ const AdminAddStore = () => {
           }}
         >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <input
-              type="text"
-              name="name"
-              placeholder="Admin Name"
-              className="p-2 border rounded"
-              value={formData.name}
-              onChange={handleChange}
-            />
-            <input
-              type="text"
-              placeholder="Store Position"
-              className="p-2 border rounded"
-              value={formData.storeDetails.position}
-              onChange={(e) => handleStoreDetailsChange(e, "position")}
-            />
             <input
               type="text"
               placeholder="Store Name"
@@ -465,22 +445,6 @@ const AdminAddStore = () => {
                 <option key={continent} value={continent}>{continent}</option>
               ))}
             </select>
-            <input
-              type="password"
-              name="password"
-              placeholder="Create a password"
-              className="p-2 border rounded"
-              value={formData.password}
-              onChange={handleChange}
-            />
-            <input
-              type="password"
-              name="confirmPassword"
-              placeholder="Confirm password"
-              className="p-2 border rounded"
-              value={formData.confirmPassword}
-              onChange={handleChange}
-            />
           </div>
 
           {/* Categories */}

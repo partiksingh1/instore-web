@@ -76,9 +76,9 @@ const HomePage = () => {
                   style={{ backgroundImage: 'url(map1.png)' }}
                 >
                   <div className="absolute inset-0 bg-white opacity-80"></div>
-                  <h1 className="text-xl md:text-xl lg:text-2xl font-extrabold mb-1 relative z-10">
+                  <h1 className="text-xl md:text-xl lg:text-2xl font-extrabold mb-1 relative z-10 text-center">
                     B2B & B2B2C MEDIA AND MARKETING SUPPORT FOR THE INDEPENDENT GLOBAL TECH, MOBILE PHONE,
-                    <br className="hidden md:block px-2 md:px-4" />
+                    <br className="hidden md:block px-2 md:px-4 text-center" />
                     VIDEO GAMING AND TCG TRADE & RETAIL COMMUNITIES
                   </h1>
                 </div>
@@ -90,7 +90,7 @@ const HomePage = () => {
                   style={{ backgroundImage: 'url(map1.png)' }}
                 >
                   <div className="absolute inset-0 bg-white opacity-80"></div>
-                  <p className="text-xl md:text-xl lg:text-2xl font-extrabold relative z-10">
+                  <p className="text-xl md:text-xl lg:text-2xl font-extrabold relative z-10 text-center">
                     A DATABASE AND DIRECTORY CONTAINING OVER 150,000 STORES AND IN EXCESS OF 5,000 WHOLESALERS & DISTRIBUTORS WORLDWIDE
                   </p>
                 </div>
