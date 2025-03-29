@@ -17,9 +17,28 @@ const Magazine: React.FC = () => {
       <div className="min-h-screen flex flex-col items-center text-black">
         <StylizedNav />
        <Socials/>
+       <div className="flex justify-center items-center mt-4 md:-mt-10 w-3/4">
+          <img
+            src="/instore-video-bg1.png"
+            alt="Left Image"
+            className="w-32 md:w-1/4 h-auto"
+          />
+
+          <img
+            src="/adbanner1.png"
+            alt="Latest"
+            className="w-32 md:w-3/4 h-auto mx-4"
+          />
+
+          <img
+            src="/instore-video-bg1.png"
+            alt="Right Image"
+            className="w-32 md:w-1/4 h-auto"
+          />
+        </div>
 
         {/* Heading */}
-        <h1 className="text-3xl mt-6 md:-mt-12 sm:text-3xl md:text-5xl font-bold mb-2 text-center">MAGAZINE & BUYER’S GUIDES</h1>
+        <h1 className="text-3xl mt-3 sm:text-3xl md:text-5xl font-bold mb-2 text-center">MAGAZINE & BUYER’S GUIDES</h1>
         <h1 className="text-2xl sm:text-3xl font-bold text-center">LATEST ISSUE</h1>
 
 {/* Embed Paperturn Flipbook */}

@@ -33,6 +33,7 @@ import AdminVideo from './pages/admin/AdminVideos';
 import AdminStoreWindow from './pages/admin/AdminStoreWindow';
 import AdminNewsLetter from './pages/admin/AdminNewsletter';
 import NewsletterPage from './pages/latestPage';
+import StoreWindow from './pages/Store-window';
 
 
 const App: React.FC = () => {
@@ -53,6 +54,7 @@ const App: React.FC = () => {
         <Route path="/magazine" element={<Magazine />} />
         <Route path="/:category" element={<DynamicCat />} />
         <Route path="/instore-video" element={<InstoreVideo />} />
+        <Route path="/store-window" element={<StoreWindow />} />
         <Route path="/posters" element={<Posters />} />
         <Route path="/podcast" element={<Podcast />} />
         <Route path="/register" element={<Register />} />

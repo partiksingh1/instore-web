@@ -34,8 +34,27 @@ const Australia = () => {
       <div className="min-h-screen flex flex-col items-center text-black">
       <StylizedNav/>
       <Socials/>
+      <div className="flex justify-center items-center mt-4 md:-mt-10 w-3/4">
+          <img
+            src="/instore-video-bg1.png"
+            alt="Left Image"
+            className="w-32 md:w-1/4 h-auto"
+          />
+
+          <img
+            src="/adbanner1.png"
+            alt="Latest"
+            className="w-32 md:w-3/4 h-auto mx-4"
+          />
+
+          <img
+            src="/instore-video-bg1.png"
+            alt="Right Image"
+            className="w-32 md:w-1/4 h-auto"
+          />
+        </div>
       {/* Heading */}
-      <h1 className="text-5xl md:text-5xl font-bold mt-4 md:-mt-12 text-center">AUSTRALIA & OCEANIA</h1>
+      <h1 className="text-5xl font-bold mb-2 mt-2 text-center">AUSTRALIA & OCEANIA</h1>
 
         <div className="relative w-full max-w-8xl mb-12">
           {/* Background Image behind Buttons */}
@@ -92,7 +111,7 @@ const Australia = () => {
         </div>
       </div>
     </div>
-    <AdsSection numOfAds={3} position="homepage"/>
+    <AdsSection numOfAds={6} position="homepage"/>
     </StoresLayout>
   );
 };

@@ -140,7 +140,7 @@ const AdminNews: React.FC = () => {
               id="link"
               placeholder="Enter video link"
               className="w-full p-2 mt-2 border border-gray-300 rounded-lg"
-              {...register("link", { required: true })}
+              {...register("link", { required: false })}
             />
           </div>
 

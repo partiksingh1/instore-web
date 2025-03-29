@@ -19,10 +19,11 @@ const AdminAds = () => {
   const [newAdData, setNewAdData] = useState({
     title: '',
     description: '',
-    position: '',
+    position: 'homepage',  // Default value for position
     link: '',
     image: null as File | null,
   });
+  
 
   // Loading states
   const [loading, setLoading] = useState(false);  // For general loading state
@@ -147,19 +148,22 @@ const AdminAds = () => {
             disabled={creatingAd}
           />
         </div>
-
         <div className="space-y-1">
-          <label htmlFor="position" className="block text-lg font-medium">Position</label>
-          <input
-            type="text"
-            className="w-full p-3 border border-gray-300 rounded-md"
-            id="position"
-            value={newAdData.position}
-            onChange={(e) => setNewAdData({ ...newAdData, position: e.target.value })}
-            required
-            disabled={creatingAd}
-          />
-        </div>
+  <label htmlFor="position" className="block text-lg font-medium">Position</label>
+  <select
+    className="w-full p-3 border border-gray-300 rounded-md"
+    id="position"
+    value={newAdData.position}  // Make sure this is linked to the state
+    onChange={(e) => setNewAdData({ ...newAdData, position: e.target.value })}  // Update position
+    required
+    disabled={creatingAd}  // Disable when creating an ad
+  >
+    <option value="homepage">Homepage</option>
+    <option value="homepage-top-banner">Homepage Top Banner</option>
+  </select>
+</div>
+
+
 
         <div className="space-y-1">
           <label htmlFor="link" className="block text-lg font-medium">Link</label>

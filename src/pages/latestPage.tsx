@@ -61,14 +61,18 @@ const NewsletterPage = () => {
 
               <h1 className="text-3xl font-semibold text-center">{newsletter.subject}</h1>
               <p className="text-base text-gray-700 mt-4 text-center">{newsletter.content}</p>
-              <a
-                href={newsletter.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-500 hover:underline mt-4 block text-center underline"
-              >
-                VIEW ON YOUTUBE
-              </a>
+
+              {/* Conditionally render the YouTube link */}
+              {newsletter.link && (
+                <a
+                  href={newsletter.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-500 hover:underline mt-4 block text-center underline"
+                >
+                  VIEW ON YOUTUBE
+                </a>
+              )}
             </div>
           )}
         </div>

@@ -45,7 +45,7 @@ const LatestSection: React.FC<LatestSectionProps> = ({ numOfNews }) => {
                 <div className="mt-2 border-2 border-black bg-white">
                   {/* Add a click handler to the h3 element to redirect */}
                   <a
-                    href={newsletter.url} // Redirect to the newsletter URL
+                    href={`/admin/latest/${newsletter.id}`} // Redirect to the newsletter URL
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -53,7 +53,10 @@ const LatestSection: React.FC<LatestSectionProps> = ({ numOfNews }) => {
                       {newsletter.subject}
                     </h3>
                   </a>
-                  <p className="text-sm sm:text-base text-gray-700">{newsletter.content}</p>
+                  <p className="text-sm sm:text-base text-gray-700">
+  {newsletter.content.split(' ').slice(0, 20).join(' ')}...
+</p>
+
                 </div>
               </div>
             ))}

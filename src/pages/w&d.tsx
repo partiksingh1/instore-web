@@ -37,11 +37,30 @@ const WholeDist = () => {
       <div className="min-h-screen flex flex-col items-center text-black">
       <StylizedNav/>
       <Socials/>
+      <div className="flex justify-center items-center mt-4 md:-mt-10 w-3/4">
+          <img
+            src="/instore-video-bg1.png"
+            alt="Left Image"
+            className="w-32 md:w-1/4 h-auto"
+          />
+
+          <img
+            src="/adbanner1.png"
+            alt="Latest"
+            className="w-32 md:w-3/4 h-auto mx-4"
+          />
+
+          <img
+            src="/instore-video-bg1.png"
+            alt="Right Image"
+            className="w-32 md:w-1/4 h-auto"
+          />
+        </div>
       {/* Heading */}
-      <h1 className="text-4xl md:text-5xl font-bold mt-4 md:-mt-12 text-center">WHOLESALERS & DISTRIBUTORS</h1>
+      <h1 className="text-4xl md:text-5xl font-bold mt-4  text-center">WHOLESALERS & DISTRIBUTORS</h1>
 
       {/* Layout for Continents Tabs with Background Image */}
-      <div className="relative w-full max-w-8xl mb-12">
+      <div className="relative w-full max-w-8xl mb-8">
         {/* Background Image behind Buttons */}
         <div className="absolute inset-0 bg-cover bg-center opacity-25" style={{ backgroundImage: "url('/store1.png')" ,backgroundSize:"cover",backgroundPosition:"center"}}></div>
 
