@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import StylizedNav from "@/components/homepage/Navbar";
-import Btn from "./Button";
 import PhonesLayout from "@/layouts/phonesLayout";
 import axios from "axios";
 import { useParams } from "react-router-dom";
@@ -11,7 +10,7 @@ import SpotlightSection from "@/components/homepage/SpotlightSection";
 const StoreWindow = () => {
   const { category } = useParams();
   let categoryH = category?.replace(/-/g, " ").toUpperCase();
-  const [products, setProducts] = useState<any[]>([]);
+  const [,setProducts] = useState<any[]>([]);
 
   useEffect(() => {
     const fetchProducts = async () => {
