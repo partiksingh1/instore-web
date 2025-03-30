@@ -34,6 +34,7 @@ import AdminStoreWindow from './pages/admin/AdminStoreWindow';
 import AdminNewsLetter from './pages/admin/AdminNewsletter';
 import NewsletterPage from './pages/latestPage';
 import StoreWindow from './pages/Store-window';
+import ScrollBarPage from './pages/admin/AdminScrollBar';
 
 
 const App: React.FC = () => {
@@ -74,6 +75,7 @@ const App: React.FC = () => {
         <Route path="/admin/videos" element={<AdminVideo/>} />
         <Route path="/admin/store-window" element={<AdminStoreWindow/>} />
         <Route path="/admin/newsletter" element={<AdminNewsLetter/>} />
+        <Route path="/admin/scrollbar" element={<ScrollBarPage/>} />
       </Routes>
     </Router>
   );

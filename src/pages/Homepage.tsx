@@ -1,4 +1,4 @@
-import {lazy } from 'react';
+import { lazy } from 'react';
 import { SocialIcon } from 'react-social-icons';
 
 // Lazy load components
@@ -28,9 +28,9 @@ const HomePage = () => {
 
       {/* Main container with responsive padding */}
       <div className="border-8 md:border-[18px] border-blue-700 m-2 md:m-4 p-2 relative rounded-lg">
-      <div className="w-full bg-red-600">
-        <Marquee text="This is a sample scrolling text! Customize it to show important information or news." />
-      </div>
+        <div className="w-full bg-red-600">
+          <Marquee />
+        </div>
         {/* Top Banner Ads */}
         <div className="flex justify-center w-full">
           <div className="w-2/5 p-2 m-2 flex flex-row space-x-2 justify-center">
@@ -41,7 +41,7 @@ const HomePage = () => {
         <div className="flex">
           {/* Main Content Section (3/4 width) */}
           <div className="w-3/4">
-            <div className="flex flex-col md:flex-row md:justify-evenly md:items-center pb-6 md:space-y-0 space-y-4">
+            <div className="flex flex-col md:flex-row md:justify-evenly md:items-center pb-3 md:space-y-4 space-y-4 border-t-2 border-b-2 border-gray-300">
               {/* Logo 1 */}
               <div className="w-full m-auto md:w-5/12 px-4">
                 <img src="/logo.png" alt="Logo" width={200} height={100} className="w-full" />
@@ -54,14 +54,15 @@ const HomePage = () => {
 
               {/* Social Icons */}
               <div className="flex flex-wrap m-auto w-3/5 md:w-60 justify-center gap-2">
-                <SocialIcon className="h-6 w-6 md:h-3 md:w-3" url="https://www.instagram.com/instorenetwork/" />
-                <SocialIcon className="h-6 w-6 md:h-3 md:w-3" url="https://x.com/instorenetwork" />
-                <SocialIcon className="h-6 w-6 md:h-3 md:w-3" url="https://facebook.com/instorenetworkuk" />
-                <SocialIcon className="h-6 w-6 md:h-3 md:w-3" url="https://tiktok.com/instorenetwork" />
-                <SocialIcon className="h-6 w-6 md:h-3 md:w-3" url="https://www.youtube.com/@InstoreNetwork" />
-                <SocialIcon className="h-6 w-6 md:h-3 md:w-3" url="https://www.linkedin.com/company/instore-network/" />
+                <SocialIcon url="https://www.instagram.com/instorenetwork/" />
+                <SocialIcon url="https://x.com/instorenetwork" />
+                <SocialIcon url="https://facebook.com/instorenetworkuk" />
+                <SocialIcon url="https://tiktok.com/instorenetwork" />
+                <SocialIcon url="https://www.youtube.com/@InstoreNetwork" />
+                <SocialIcon url="https://www.linkedin.com/company/instore-network/" />
               </div>
             </div>
+
 
             <StylizedNav />
 
@@ -125,7 +126,7 @@ const HomePage = () => {
   );
 
   return (
-      <MainContent />
+    <MainContent />
   );
 };
 

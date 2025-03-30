@@ -1,4 +1,5 @@
 import Footer from "@/components/Footer";
+import Marquee from "@/components/homepage/Marquee";
 
 export default function RegisterLayout({
   children,
@@ -20,6 +21,9 @@ export default function RegisterLayout({
       </div>
     </div>
     <div className="border-8 md:border-[18px] border-blue-700 m-2 md:m-4 p-4 md:p-4 relative rounded-lg">
+    <div className="w-full bg-red-600">
+          <Marquee />
+        </div>
         {children}
         <Footer/>
     </div>
