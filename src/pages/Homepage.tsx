@@ -8,6 +8,7 @@ const AdsSection = lazy(() => import('@/components/homepage/AdsSection'));
 const VideoSection = lazy(() => import('@/components/homepage/VideoSection'));
 const Footer = lazy(() => import('@/components/Footer'));
 const LatestSection = lazy(() => import('@/components/homepage/LatestSection'));
+const Marquee = lazy(() => import('@/components/homepage/Marquee'));
 
 const HomePage = () => {
 
@@ -17,17 +18,19 @@ const HomePage = () => {
         className="absolute inset-0 bg-cover bg-center opacity-10"
         style={{ backgroundImage: "url('https://upload.wikimedia.org/wikipedia/commons/4/4d/BlankMap-World.svg')" }}
       />
-
       {/* Arrows Container */}
-      <div className="absolute left-1/2 transform -translate-x-1/2 -top-3 md:-top-0 z-10 flex gap-2">
-        <div className="text-white text-xl md:text-7xl font-extralight flex m-0.5">
+      <div className="absolute left-1/2 transform -translate-x-1/2 -top-3 md:top-1.5 z-10 flex gap-2">
+        <div className="text-white text-xl md:text-7xl font-extralight flex -mt-1">
           <img src="/arrow.png" alt="Arrow" width={44} height={44} className="w-auto h-11" />
           <img src="/arrow.png" alt="Arrow" width={44} height={44} className="w-auto h-11 -ml-4" />
         </div>
       </div>
 
       {/* Main container with responsive padding */}
-      <div className="border-8 md:border-[18px] border-blue-700 m-2 md:m-4 p-2 md:p-4 relative rounded-lg">
+      <div className="border-8 md:border-[18px] border-blue-700 m-2 md:m-4 p-2 relative rounded-lg">
+      <div className="w-full bg-red-600">
+        <Marquee text="This is a sample scrolling text! Customize it to show important information or news." />
+      </div>
         {/* Top Banner Ads */}
         <div className="flex justify-center w-full">
           <div className="w-2/5 p-2 m-2 flex flex-row space-x-2 justify-center">
