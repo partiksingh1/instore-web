@@ -1,20 +1,18 @@
 import { Button } from "@/components/ui/button";
 interface BtnProps {
   text: string; // The button's label text
-  redirectTo: string; // The URL or path to redirect to
+  href?: string; // The URL or path to redirect to
 }
 
-const Btn: React.FC<BtnProps> = ({ text }) => {
+const Btn: React.FC<BtnProps> = ({ href,text }) => {
   return (
-    // <Link href={redirectTo} className="relative group
-    //       whitespace-nowrap
-    //       bg-gradient-to-r from-red-800 to-red-600
-    //       hover:from-red-800 hover:to-red-600
-    //       rounded-lg
-    //       w-2/5 h-16
-    //       mb-4
-    //       transition-all duration-300">
-      <Button
+    <a
+    href={href}
+    target="_blank"  // Open in a new tab
+    rel="noopener noreferrer"  // Security measure
+    className="w-full text-center"
+  >
+            <Button
         variant="ghost"
         className="
           relative group
@@ -39,7 +37,7 @@ const Btn: React.FC<BtnProps> = ({ text }) => {
           {text}
         </span>
       </Button>
-    // </Link>
+    </a>
   );
 };
 

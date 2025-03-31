@@ -50,10 +50,6 @@ const Phones = () => {
         {/* Layout for Products with Background Image */}
         <div className="relative w-full bg-center min-h-screen flex items-center justify-center">
           {/* Background Image behind Buttons */}
-          <div
-            className="absolute inset-0 bg-cover bg-center opacity-25"
-            style={{ backgroundImage: "url('/store1.png')", backgroundSize: "cover", backgroundPosition: "center" }}
-          ></div>
 
           <div className="relative z-10 p-2 w-full flex">
             {/* Conditional Layout */}
@@ -63,7 +59,7 @@ const Phones = () => {
                   <Btn
                     key={product.id}
                     text={product.name}
-                    redirectTo={`/accessories/${product.name.toLowerCase().replace(/\s+/g, "-")}`}
+                    href={product.brandUrl}
                   />
                 ))}
               </div>
@@ -73,7 +69,7 @@ const Phones = () => {
                   <Btn
                     key={product.id}
                     text={product.name}
-                    redirectTo={`/accessories/${product.name.toLowerCase().replace(/\s+/g, "-")}`}
+                    href={product.brandUrl}
                   />
                 ))}
               </div>

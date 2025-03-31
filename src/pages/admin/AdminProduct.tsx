@@ -10,24 +10,31 @@ const AdminProductPage: React.FC = () => {
   const [deleteId, setDeleteId] = useState<number | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [selectedCategoryName, setSelectedCategoryName] = useState<string | null>(null);
+  const [selectedCategoryId, setSelectedCategoryId] = useState<number | null>(null); // added state for category ID
   const navigate = useNavigate();
   const [productName, setProductName] = useState<string>("");
-  const [, setCategoryId] = useState<number | null>(null);
+  const [brandUrl, setBrandUrl] = useState<string>("");
+  
+  // Fetch categories
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const response = await axios.get(`${import.meta.env.VITE_SOME_KEY}/categories`);
+        setCategories(response.data.categories);
+      } catch (error) {
+        toast.error("Failed to fetch categories.");
+      }
+    };
+    
+    fetchCategories();
+  }, []);
+
   // Fetch products whenever selected category changes
   useEffect(() => {
     if (selectedCategoryName) {
       fetchProductsByCategory(selectedCategoryName);
     }
   }, [selectedCategoryName]);
-
-  const fetchCategories = async () => {
-    try {
-      const response = await axios.get(`${import.meta.env.VITE_SOME_KEY}/categories`);
-      setCategories(response.data.categories);
-    } catch (error) {
-      toast.error("Failed to fetch categories.");
-    }
-  };
 
   const fetchProductsByCategory = async (categoryName: string) => {
     try {
@@ -37,28 +44,28 @@ const AdminProductPage: React.FC = () => {
       toast.error("Failed to fetch products for the selected category.");
     }
   };
-
   const onSubmit = async () => {
     if (!productName || !selectedCategoryName) {
       toast.error("Please fill out both product name and category.");
       return;
     }
-
+  
     setLoading(true);
     try {
       const productData = {
         name: productName.toUpperCase(),
-        category: selectedCategoryName, // Use category name here
+        brandUrl: brandUrl,
+        categoryId: selectedCategoryId, // Pass the categoryId here
       };
-
+  
       await axios.post(`${import.meta.env.VITE_SOME_KEY}/admin/products`, productData, {
         headers: {
           "Content-Type": "application/json",
         },
       });
-
+  
       toast.success("Product created successfully");
-      fetchProductsByCategory(selectedCategoryName); // Refresh product list for the current category
+      fetchProductsByCategory(selectedCategoryName || ""); // Provide default value here
       resetForm(); // Reset the form
     } catch (error) {
       toast.error("Error creating product");
@@ -66,10 +73,12 @@ const AdminProductPage: React.FC = () => {
       setLoading(false);
     }
   };
+  
 
   const resetForm = () => {
     setProductName("");
-    setCategoryId(null);
+    setSelectedCategoryId(null);
+    setBrandUrl("");
   };
 
   const openDeleteModal = (id: number) => {
@@ -95,17 +104,28 @@ const AdminProductPage: React.FC = () => {
       }
     }
   };
+
   useEffect(() => {
     // Check if the user has the 'ADMIN' role
     const role = localStorage.getItem('role');
     if (role !== 'ADMIN') {
-      // If the user is not an admin, redirect them to the login page (or any other page)
       toast.error('You are not authorized to access this page.');
       navigate('/login');
-    } else {
-      fetchCategories();
     }
   }, [navigate]);
+
+  // Handle category selection change
+  const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const categoryName = e.target.value;
+    setSelectedCategoryName(categoryName);
+
+    // Find the categoryId based on the selected categoryName
+    const selectedCategory = categories.find((category) => category.name === categoryName);
+    if (selectedCategory) {
+      setSelectedCategoryId(selectedCategory.id); // Set the categoryId based on the selected category
+    }
+  };
+
   return (
     <div className="container mx-auto p-6">
       <h2 className="text-3xl font-bold text-center mb-6">Manage Products</h2>
@@ -124,6 +144,17 @@ const AdminProductPage: React.FC = () => {
             onChange={(e) => setProductName(e.target.value)}
           />
         </div>
+        <div className="mb-4">
+          <label htmlFor="brandUrl" className="block text-gray-700 font-medium">Brand URL</label>
+          <input
+            type="text"
+            id="brandUrl"
+            placeholder="Enter Brand URL"
+            className="w-full p-2 mt-2 border border-gray-300 rounded-lg"
+            value={brandUrl}
+            onChange={(e) => setBrandUrl(e.target.value)}
+          />
+        </div>
 
         <div className="mb-4">
           <label htmlFor="category" className="block text-gray-700 font-medium">Category</label>
@@ -131,7 +162,7 @@ const AdminProductPage: React.FC = () => {
             id="category"
             className="w-full p-2 mt-2 border border-gray-300 rounded-lg"
             value={selectedCategoryName || ""}
-            onChange={(e) => setSelectedCategoryName(e.target.value)}
+            onChange={handleCategoryChange} // Update category change logic
           >
             <option value="">Select a category</option>
             {categories.map((category) => (
@@ -158,7 +189,7 @@ const AdminProductPage: React.FC = () => {
           id="category"
           className="w-full p-2 mt-2 border border-gray-300 rounded-lg"
           value={selectedCategoryName || ""}
-          onChange={(e) => setSelectedCategoryName(e.target.value)}
+          onChange={handleCategoryChange}
         >
           <option value="">Select a category</option>
           {categories.map((category) => (
@@ -175,9 +206,16 @@ const AdminProductPage: React.FC = () => {
         {products.length > 0 ? (
           products.map((product) => (
             <div key={product.id} className="bg-white p-4 rounded-lg shadow-md flex justify-between items-center">
-              <div>
-                <strong className="text-xl">{product.name}</strong>
-              </div>
+  <div>
+    <a
+      href={product.brandUrl}  // Redirects to the brand URL
+      target="_blank"           // Opens in a new tab
+      rel="noopener noreferrer" // Security measure to prevent reverse tabnabbing
+      className="text-xl hover:underline"
+    >
+      <strong>{product.name}</strong>
+    </a>
+  </div>
               <button
                 onClick={() => openDeleteModal(product.id)}
                 className="bg-red-500 text-white p-2 rounded-lg hover:bg-red-600"
