@@ -67,7 +67,7 @@ const StylizedNav: React.FC = () => {
               className={`
                 ${item.path === location.pathname ? 'bg-red-700' : 'bg-blue-600'} 
                 text-white 
-                px-6 py-2 rounded-md 
+                px-6 py-1
                 transition-all duration-300
                 ${hoveredItem === index ? 'scale-105' : ''}  {/* Keep hover scaling effect */}
               `}
