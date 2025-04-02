@@ -31,10 +31,11 @@ import AdminProductPage from './pages/admin/AdminProduct';
 import DynamicCat from './pages/dynamicCat';
 import AdminVideo from './pages/admin/AdminVideos';
 import AdminStoreWindow from './pages/admin/AdminStoreWindow';
-import AdminNewsLetter from './pages/admin/AdminNewsletter';
+// import AdminNewsLetter from './pages/admin/AdminNewsletter';
 import NewsletterPage from './pages/latestPage';
 import StoreWindow from './pages/Store-window';
 import ScrollBarPage from './pages/admin/AdminScrollBar';
+import DownloadCSV from './pages/admin/AdminNewsletter';
 
 
 const App: React.FC = () => {
@@ -74,7 +75,7 @@ const App: React.FC = () => {
         <Route path="/admin/products" element={<AdminProductPage/>} />
         <Route path="/admin/videos" element={<AdminVideo/>} />
         <Route path="/admin/store-window" element={<AdminStoreWindow/>} />
-        <Route path="/admin/newsletter" element={<AdminNewsLetter/>} />
+        <Route path="/admin/newsletter" element={<DownloadCSV/>} />
         <Route path="/admin/scrollbar" element={<ScrollBarPage/>} />
       </Routes>
     </Router>

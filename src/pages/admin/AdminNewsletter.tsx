@@ -1,365 +1,386 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
-import { useForm, useFieldArray } from 'react-hook-form';
-import { toast } from 'react-toastify';
-import { useNavigate } from 'react-router-dom';
 
-type Content = { title: string; description: string };
-type NewsletterForm = {
-  contents: Content[];
-  images: FileList;
-  recipients: string;
-};
+interface FormData {
+  country: string;
+  categories: string[];
+}
 
-const languageOptions = {
-  af: "Afrikaans",
-  sq: "Albanian",
-  am: "Amharic",
-  ar: "Arabic",
-  hy: "Armenian",
-  az: "Azerbaijani",
-  eu: "Basque",
-  be: "Belarusian",
-  bn: "Bengali",
-  bs: "Bosnian",
-  bg: "Bulgarian",
-  ca: "Catalan",
-  ceb: "Cebuano",
-  ny: "Chichewa",
-  "zh-cn": "Chinese (Simplified)",
-  "zh-tw": "Chinese (Traditional)",
-  co: "Corsican",
-  hr: "Croatian",
-  cs: "Czech",
-  da: "Danish",
-  nl: "Dutch",
-  en: "English",
-  eo: "Esperanto",
-  et: "Estonian",
-  tl: "Filipino",
-  fi: "Finnish",
-  fr: "French",
-  fy: "Frisian",
-  gl: "Galician",
-  ka: "Georgian",
-  de: "German",
-  el: "Greek",
-  gu: "Gujarati",
-  ht: "Haitian Creole",
-  ha: "Hausa",
-  haw: "Hawaiian",
-  iw: "Hebrew",
-  hi: "Hindi",
-  hmn: "Hmong",
-  hu: "Hungarian",
-  is: "Icelandic",
-  ig: "Igbo",
-  id: "Indonesian",
-  ga: "Irish",
-  it: "Italian",
-  ja: "Japanese",
-  jw: "Javanese",
-  kn: "Kannada",
-  kk: "Kazakh",
-  km: "Khmer",
-  ko: "Korean",
-  ku: "Kurdish (Kurmanji)",
-  ky: "Kyrgyz",
-  lo: "Lao",
-  la: "Latin",
-  lv: "Latvian",
-  lt: "Lithuanian",
-  lb: "Luxembourgish",
-  mk: "Macedonian",
-  mg: "Malagasy",
-  ms: "Malay",
-  ml: "Malayalam",
-  mt: "Maltese",
-  mi: "Maori",
-  mr: "Marathi",
-  mn: "Mongolian",
-  my: "Myanmar (Burmese)",
-  ne: "Nepali",
-  no: "Norwegian",
-  or: "Odia",
-  ps: "Pashto",
-  fa: "Persian",
-  pl: "Polish",
-  pt: "Portuguese",
-  pa: "Punjabi",
-  ro: "Romanian",
-  ru: "Russian",
-  sm: "Samoan",
-  gd: "Scots Gaelic",
-  sr: "Serbian",
-  st: "Sesotho",
-  sn: "Shona",
-  sd: "Sindhi",
-  si: "Sinhala",
-  sk: "Slovak",
-  sl: "Slovenian",
-  so: "Somali",
-  es: "Spanish",
-  su: "Sundanese",
-  sw: "Swahili",
-  sv: "Swedish",
-  tg: "Tajik",
-  ta: "Tamil",
-  te: "Telugu",
-  th: "Thai",
-  tr: "Turkish",
-  uk: "Ukrainian",
-  ur: "Urdu",
-  ug: "Uyghur",
-  uz: "Uzbek",
-  vi: "Vietnamese",
-  cy: "Welsh",
-  xh: "Xhosa",
-  yi: "Yiddish",
-  yo: "Yoruba",
-  zu: "Zulu",
-};
-
-const AdminNewsLetter: React.FC = () => {
-  const [newsletters, setNewsletters] = useState<any[]>([]);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [deleteId, setDeleteId] = useState<number | null>(null);
-  const [loading, setLoading] = useState(false);
-  const [language, setLanguage] = useState<string>(''); // Changed to hold a single language
-  const [isTranslating, setIsTranslating] = useState(false);
-  const navigate = useNavigate();
-  const handleLanguageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setLanguage(e.target.value); // Set the selected language
-  };
-
-  const { register, control, handleSubmit, reset } = useForm<NewsletterForm>({
-    defaultValues: { contents: [{ title: '', description: '' }] },
-  });
-  const { fields, append, remove } = useFieldArray({ control, name: 'contents' });
-
-  useEffect(() => {
-    fetchNewsletters();
-  }, []);
-
-  const fetchNewsletters = async () => {
-    try {
-      const response = await axios.get(`${import.meta.env.VITE_SOME_KEY}/admin/newsletter`);
-      setNewsletters(response.data);
-    } catch (error) {
-      toast.error('Failed to fetch newsletters.');
-    }
-  };
-
-  const onSubmit = async (data: NewsletterForm) => {
-    try {
+const StoreEmailsExport: React.FC = () => {
+    const [formData, setFormData] = useState<FormData>({
+      country: '',
+      categories: [],
+    });
+    const [categoryInput, setCategoryInput] = useState('');
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState<string | null>(null);
+  
+    // Sample countries for dropdown (you might want to fetch this from an API)
+    const countries = [
+        "afghanistan",
+        "albania",
+        "algeria",
+        "andorra",
+        "angola",
+        "antigua and barbuda",
+        "argentina",
+        "armenia",
+        "australia",
+        "austria",
+        "azerbaijan",
+        "the bahamas",
+        "bahrain",
+        "bangladesh",
+        "barbados",
+        "belarus",
+        "belgium",
+        "belize",
+        "benin",
+        "bhutan",
+        "bolivia",
+        "bosnia and herzegovina",
+        "botswana",
+        "brazil",
+        "brunei",
+        "bulgaria",
+        "burkina faso",
+        "burundi",
+        "cabo verde",
+        "cambodia",
+        "cameroon",
+        "canada",
+        "central african republic",
+        "chad",
+        "chile",
+        "china",
+        "colombia",
+        "comoros",
+        "congo, democratic republic of the",
+        "congo, republic of the",
+        "costa rica",
+        "côte d’ivoire",
+        "croatia",
+        "cuba",
+        "cyprus",
+        "czech republic",
+        "denmark",
+        "djibouti",
+        "dominica",
+        "dominican republic",
+        "east timor (timor-leste)",
+        "ecuador",
+        "egypt",
+        "el salvador",
+        "equatorial guinea",
+        "eritrea",
+        "estonia",
+        "eswatini",
+        "ethiopia",
+        "fiji",
+        "finland",
+        "france",
+        "gabon",
+        "the gambia",
+        "georgia",
+        "germany",
+        "ghana",
+        "greece",
+        "grenada",
+        "guatemala",
+        "guinea",
+        "guinea-bissau",
+        "guyana",
+        "haiti",
+        "honduras",
+        "hungary",
+        "iceland",
+        "india",
+        "indonesia",
+        "iran",
+        "iraq",
+        "ireland",
+        "israel",
+        "italy",
+        "jamaica",
+        "japan",
+        "jordan",
+        "kazakhstan",
+        "kenya",
+        "kiribati",
+        "korea, north",
+        "korea, south",
+        "kosovo",
+        "kuwait",
+        "kyrgyzstan",
+        "laos",
+        "latvia",
+        "lebanon",
+        "lesotho",
+        "liberia",
+        "libya",
+        "liechtenstein",
+        "lithuania",
+        "luxembourg",
+        "madagascar",
+        "malawi",
+        "malaysia",
+        "maldives",
+        "mali",
+        "malta",
+        "marshall islands",
+        "mauritania",
+        "mauritius",
+        "mexico",
+        "micronesia, federated states of",
+        "moldova",
+        "monaco",
+        "mongolia",
+        "montenegro",
+        "morocco",
+        "mozambique",
+        "myanmar (burma)",
+        "namibia",
+        "nauru",
+        "nepal",
+        "netherlands",
+        "new zealand",
+        "nicaragua",
+        "niger",
+        "nigeria",
+        "north macedonia",
+        "norway",
+        "oman",
+        "pakistan",
+        "palau",
+        "panama",
+        "papua new guinea",
+        "paraguay",
+        "peru",
+        "philippines",
+        "poland",
+        "portugal",
+        "qatar",
+        "romania",
+        "russia",
+        "rwanda",
+        "saint kitts and nevis",
+        "saint lucia",
+        "saint vincent and the grenadines",
+        "samoa",
+        "san marino",
+        "sao tome and principe",
+        "saudi arabia",
+        "senegal",
+        "serbia",
+        "seychelles",
+        "sierra leone",
+        "singapore",
+        "slovakia",
+        "slovenia",
+        "solomon islands",
+        "somalia",
+        "south africa",
+        "spain",
+        "sri lanka",
+        "sudan",
+        "sudan, south",
+        "suriname",
+        "sweden",
+        "switzerland",
+        "syria",
+        "taiwan",
+        "tajikistan",
+        "tanzania",
+        "thailand",
+        "togo",
+        "tonga",
+        "trinidad and tobago",
+        "tunisia",
+        "turkey",
+        "turkmenistan",
+        "tuvalu",
+        "uganda",
+        "ukraine",
+        "united arab emirates",
+        "united kingdom",
+        "united states",
+        "uruguay",
+        "uzbekistan",
+        "vanuatu",
+        "vatican city",
+        "venezuela",
+        "vietnam",
+        "yemen",
+        "zambia",
+        "zimbabwe"
+      ]
+  
+    const handleSubmit = async (e: React.FormEvent) => {
+      e.preventDefault();
       setLoading(true);
-      const formData = new FormData();
-      formData.append('contents', JSON.stringify(data.contents));
-      formData.append('recipients', JSON.stringify(data.recipients.split(',').map(email => email.trim())));
-
-      if (data.images) {
-        Array.from(data.images).forEach(file => formData.append('images', file));
-      }
-
-      await axios.post(`${import.meta.env.VITE_SOME_KEY}/admin/newsletter/create`, formData, {
-        headers: { 'Content-Type': 'multipart/form-data' },
-      });
-
-      toast.success('Newsletter created successfully!');
-      fetchNewsletters();
-      reset();
-    } catch (error) {
-      toast.error('Failed to create newsletter.');
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const handleDelete = async () => {
-    if (deleteId !== null) {
+      setError(null);
+  
       try {
-        setLoading(true);
-        await axios.delete(`${import.meta.env.VITE_SOME_KEY}/admin/newsletter/${deleteId}`);
-        toast.success('Newsletter deleted successfully.');
-        fetchNewsletters();
-      } catch (error) {
-        toast.error('Failed to delete newsletter.');
+        const response = await axios.post(
+          `${import.meta.env.VITE_SOME_KEY}/admin/getStores`,
+          formData,
+          {
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            responseType: 'blob', // Important for file download
+          }
+        );
+  
+        // Create a blob URL and trigger download
+        const url = window.URL.createObjectURL(new Blob([response.data]));
+        const link = document.createElement('a');
+        link.href = url;
+        link.setAttribute('download', `${formData.country} stores for ${formData.categories}.csv`);
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        window.URL.revokeObjectURL(url);
+  
+      } catch (err) {
+        setError(
+          axios.isAxiosError(err) && err.response?.data
+            ? 'Error downloading the file'
+            : 'An error occurred while fetching store emails'
+        );
       } finally {
         setLoading(false);
-        setIsModalOpen(false);
       }
-    }
-  };
-
-  const handleSend = async (id: number) => {
-    try {
-      setLoading(true);
-      setIsTranslating(true);
-      // Step 2: Send translated content
-      await axios.post(`${import.meta.env.VITE_SOME_KEY}/admin/newsletter/${id}/send`, { language, contents: newsletters.find(n => n.id === id)?.contents });
-      
-      toast.success('Newsletter sent successfully!');
-    } catch (error) {
-      toast.error('Failed to send newsletter.');
-    } finally {
-      setLoading(false);
-      setIsTranslating(false);
-    }
-  };
-  useEffect(() => {
-    // Check if the user has the 'ADMIN' role
-    const role = localStorage.getItem('role');
-    if (role !== 'ADMIN') {
-      // If the user is not an admin, redirect them to the login page (or any other page)
-      toast.error('You are not authorized to access this page.');
-      navigate('/login');
-    } else {
-      fetchNewsletters();
-    }
-  }, [navigate]);
-
-  return (
-    <div className="max-w-4xl mx-auto p-8">
-      <h1 className="text-3xl font-semibold text-center mb-6">Manage Newsletters</h1>
-
-      {/* Create Newsletter Form */}
-      <div className="bg-white p-6 rounded-lg shadow-lg mb-6">
-        <h2 className="text-2xl font-semibold mb-4">Create a New Newsletter</h2>
-        <form onSubmit={handleSubmit(onSubmit)} encType="multipart/form-data">
-          {fields.map((field, index) => (
-            <div key={field.id} className="mb-4">
-              <label className="block text-gray-700">Title {index + 1}</label>
+    };
+  
+    const addCategory = () => {
+      if (categoryInput.trim() && !formData.categories.includes(categoryInput.trim())) {
+        setFormData({
+          ...formData,
+          categories: [...formData.categories, categoryInput.trim()],
+        });
+        setCategoryInput('');
+      }
+    };
+  
+    const removeCategory = (category: string) => {
+      setFormData({
+        ...formData,
+        categories: formData.categories.filter((cat) => cat !== category),
+      });
+    };
+  
+    return (
+      <div className="max-w-2xl mx-auto p-6">
+        <h1 className="text-2xl font-bold mb-6">Export Store Emails</h1>
+  
+        <form onSubmit={handleSubmit} className="space-y-6">
+          {/* Country Selection */}
+          <div>
+            <label htmlFor="country" className="block text-sm font-medium text-gray-700">
+              Country
+            </label>
+            <select
+              id="country"
+              value={formData.country}
+              onChange={(e) => setFormData({ ...formData, country: e.target.value })}
+              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+              required
+            >
+              <option value="">Select a country</option>
+              {countries.map((country) => (
+                <option key={country} value={country}>
+                  {country}
+                </option>
+              ))}
+            </select>
+          </div>
+  
+          {/* Categories Input */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700">Categories</label>
+            <div className="mt-1 flex gap-2">
               <input
                 type="text"
-                className="w-full p-2 mt-2 border border-gray-300 rounded-lg"
-                {...register(`contents.${index}.title`, { required: true })}
-              />
-              <label className="block text-gray-700 mt-2">Description {index + 1}</label>
-              <textarea
-                className="w-full p-2 mt-2 border border-gray-300 rounded-lg"
-                {...register(`contents.${index}.description`, { required: true })}
+                value={categoryInput}
+                onChange={(e) => setCategoryInput(e.target.value)}
+                className="flex-1 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                placeholder="Enter a category"
+                onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), addCategory())}
               />
               <button
                 type="button"
-                className="text-red-500 mt-2"
-                onClick={() => remove(index)}
+                onClick={addCategory}
+                className="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700"
               >
-                Remove
+                Add
               </button>
             </div>
-          ))}
-          <button
-            type="button"
-            className="bg-blue-300 text-white p-2 rounded-lg mb-4"
-            onClick={() => append({ title: '', description: '' })}
-          >
-            Add Content
-          </button>
-
-          <div className="mb-4">
-            <label className="block text-gray-700">Images</label>
-            <input
-              type="file"
-              multiple
-              className="w-full p-2 mt-2 border border-gray-300 rounded-lg"
-              {...register('images', { required: true })}
-            />
-          </div>
-
-          <div className="mb-4">
-            <label className="block text-gray-700">Recipients (comma-separated emails)</label>
-            <input
-              type="text"
-              className="w-full p-2 mt-2 border border-gray-300 rounded-lg"
-              {...register('recipients', { required: true })}
-            />
-          </div>
-
-          <button
-            type="submit"
-            className="w-full bg-blue-500 text-white p-2 rounded-lg hover:bg-blue-600"
-            disabled={loading}
-          >
-            {loading ? 'Creating...' : 'Create Newsletter'}
-          </button>
-        </form>
-      </div>
-
-      {/* Newsletter List */}
-      <h2 className="text-2xl font-semibold mb-4">Newsletter List</h2>
-      <div className="space-y-4">
-        {newsletters.map((newsletter) => (
-          <div key={newsletter.id} className="bg-white p-4 rounded-lg shadow-md">
-            {newsletter.contents.map((content: Content, idx: number) => (
-              <div key={idx}>
-                <strong className="text-xl">{content.title}</strong>
-                <p className="text-sm text-gray-600">{content.description}</p>
-              </div>
-            ))}
-            <div className="flex flex-wrap gap-4 mt-4">
-              {newsletter.images.map((img: string, idx: number) => (
-                <img key={idx} src={img} alt="Newsletter" className="w-32 h-32 object-cover" />
+  
+            {/* Display selected categories */}
+            <div className="mt-2 flex flex-wrap gap-2">
+              {formData.categories.map((category) => (
+                <span
+                  key={category}
+                  className="inline-flex items-center px-2.5 py-0.5 rounded-full text-sm bg-gray-100 text-gray-800"
+                >
+                  {category}
+                  <button
+                    type="button"
+                    onClick={() => removeCategory(category)}
+                    className="ml-1 text-gray-500 hover:text-gray-700"
+                  >
+                    ×
+                  </button>
+                </span>
               ))}
             </div>
-            <div className="flex space-x-4 mt-4">
-              <button
-                onClick={() => {
-                  setIsModalOpen(true);
-                  setDeleteId(newsletter.id);
-                }}
-                className="bg-red-500 text-white p-2 rounded-lg hover:bg-red-600"
-              >
-                Delete
-              </button>
-
-              <select
-                value={language}
-                onChange={handleLanguageChange}
-                className="border p-2 rounded-lg w-full"
-              >
-                <option value="" disabled>Select a language</option>
-                {Object.entries(languageOptions).map(([key, value]) => (
-                  <option key={key} value={key}>
-                    {value}
-                  </option>
-                ))}
-              </select>
-              <button
-                onClick={() => handleSend(newsletter.id)}
-                className="bg-green-500 text-white p-2 rounded-lg hover:bg-green-600"
-                disabled={isTranslating || loading}
-              >
-                {isTranslating || loading ? 'Sending...' : 'Send'}
-              </button>
-            </div>
           </div>
-        ))}
+  
+          {/* Submit Button */}
+          <button
+            type="submit"
+            disabled={loading || !formData.country || formData.categories.length === 0}
+            className="w-full px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 disabled:bg-gray-400 disabled:cursor-not-allowed"
+          >
+            {loading ? (
+              <span className="flex items-center justify-center">
+                <svg
+                  className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <circle
+                    className="opacity-25"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                  ></circle>
+                  <path
+                    className="opacity-75"
+                    fill="currentColor"
+                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                  ></path>
+                </svg>
+                Downloading...
+              </span>
+            ) : (
+              'Download CSV'
+            )}
+          </button>
+        </form>
+  
+        {/* Error Message */}
+        {error && (
+          <div className="mt-4 p-4 bg-red-100 text-red-700 rounded-md">
+            {error}
+          </div>
+        )}
       </div>
-
-      {/* Delete Confirmation Modal */}
-      {isModalOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-          <div className="bg-white p-6 rounded-lg shadow-lg w-96">
-            <h2 className="text-xl font-semibold mb-4">Confirm Deletion</h2>
-            <div className="flex justify-between">
-              <button
-                onClick={() => setIsModalOpen(false)}
-                className="bg-gray-500 text-white p-2 rounded-lg"
-              >
-                Cancel
-              </button>
-              <button
-                onClick={handleDelete}
-                className="bg-red-500 text-white p-2 rounded-lg"
-              >
-                Delete
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
-    </div>
-  );
-};
-
-export default AdminNewsLetter;
+    );
+  };
+  
+  export default StoreEmailsExport;
