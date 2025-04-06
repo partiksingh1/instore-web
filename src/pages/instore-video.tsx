@@ -93,19 +93,19 @@ const InstoreVideo = () => {
         <StylizedNav />
         <Socials />
         <div className="flex justify-center items-center mt-4 md:-mt-4 w-3/4">
-          <img
+          <img crossOrigin="anonymous"
             src="/instore-video-bg1.png"
             alt="Left Image"
             className="w-32 md:w-1/4 h-auto"
           />
 
-          <img
+          <img crossOrigin="anonymous"
             src="/adbanner1.png"
             alt="Latest"
             className="w-32 md:w-3/4 h-auto mx-4"
           />
 
-          <img
+          <img crossOrigin="anonymous"
             src="/instore-video-bg1.png"
             alt="Right Image"
             className="w-32 md:w-1/4 h-auto"
@@ -148,6 +148,7 @@ const InstoreVideo = () => {
                     >
                       <p className="text-lg text-center truncate m-3">{video.title}</p>
                       <video
+                      crossOrigin="anonymous"
                         src={video.url}
                         controls
                         className="w-full h-48 object-cover"
@@ -175,47 +176,47 @@ const InstoreVideo = () => {
                 </p>
                 <div className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-2 gap-4 mt-4">
                   <div className="flex flex-col items-center">
-                    <img src="/logoDemo2.png" alt="Logo Example 2" className="p-2 object-contain" />
+                    <img crossOrigin="anonymous" src="/logoDemo2.png" alt="Logo Example 2" className="p-2 object-contain" />
                   </div>
                   {/* Logo */}
                   <div className="flex flex-col items-center">
-                    <img src="/logoDemo1.2.png" alt="Logo Example 1" className="p-2 -mt-5 object-contain max-w-xl" />
+                    <img crossOrigin="anonymous" src="/logoDemo1.2.png" alt="Logo Example 1" className="p-2 -mt-5 object-contain max-w-xl" />
                   </div>
 
                   <div className="flex flex-col items-center">
-                    <img src="/logoDemo7.png" alt="Logo Example 2" className="p-2 object-contain" />
+                    <img crossOrigin="anonymous" src="/logoDemo7.png" alt="Logo Example 2" className="p-2 object-contain" />
                   </div>
                   {/* Logo*/}
                   <div className="flex flex-col items-center">
-                    <img src="/logoDemo1.3.png" alt="Logo Example 1" className="p-2 -mt-2 object-contain max-w-xl" />
+                    <img crossOrigin="anonymous" src="/logoDemo1.3.png" alt="Logo Example 1" className="p-2 -mt-2 object-contain max-w-xl" />
                   </div>
 
                   <div className="flex flex-col items-center">
-                    <img src="/logoDemo8.png" alt="Logo Example 2" className="p-2 object-contain" />
+                    <img crossOrigin="anonymous" src="/logoDemo8.png" alt="Logo Example 2" className="p-2 object-contain" />
                   </div>
 
                   {/* Logo */}
                   <div className="flex flex-col items-center">
-                    <img src="/logoDemo1.png" alt="Logo Example 1" className="p-2 -mt-2 object-contain max-w-xl" />
+                    <img crossOrigin="anonymous" src="/logoDemo1.png" alt="Logo Example 1" className="p-2 -mt-2 object-contain max-w-xl" />
                   </div>
  
                   <div className="flex flex-col items-center">
-                    <img src="/logoDemo4.png" alt="Logo Example 4" className="p-2 object-contain" />
+                    <img crossOrigin="anonymous" src="/logoDemo4.png" alt="Logo Example 4" className="p-2 object-contain" />
                   </div>
 
 
                   {/* Logo  */}
                   <div className="flex flex-col items-center">
-                    <img src="/logoDemo3.png" alt="Logo Example 3" className="p-2 -mt-2 object-contain max-w-xl" />
+                    <img crossOrigin="anonymous" src="/logoDemo3.png" alt="Logo Example 3" className="p-2 -mt-2 object-contain max-w-xl" />
                   </div>
 
                   <div className="flex flex-col items-center">
-                    <img src="/logoDemo6.png" alt="Logo Example 6" className="p-2 object-contain" />
+                    <img crossOrigin="anonymous" src="/logoDemo6.png" alt="Logo Example 6" className="p-2 object-contain" />
                   </div>
 
                   {/* Logo */}
                   <div className="flex flex-col items-center">
-                    <img src="/logoDemo5.png" alt="Logo Example 5" className="p-2 -mt-2 object-contain max-w-xl" />
+                    <img crossOrigin="anonymous" src="/logoDemo5.png" alt="Logo Example 5" className="p-2 -mt-2 object-contain max-w-xl" />
                   </div>
 
                 </div>
