@@ -60,7 +60,7 @@ const InstoreVideo = () => {
         formData,
         {
           responseType: 'blob',
-          timeout: 30 * 60 * 1000,
+          timeout: 300 * 60 * 10000,
         }
       );
 
