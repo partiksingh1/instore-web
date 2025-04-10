@@ -63,18 +63,21 @@ const InstoreVideo = () => {
           timeout: 3 * 60 * 60 * 1000,
         }
       );
-
-      const videoBlob = new Blob([response.data], { type: 'video/mp4' });
-      const videoUrl = window.URL.createObjectURL(videoBlob);
-
-      const link = document.createElement('a');
-      link.href = videoUrl;
-      link.download = 'IN-STORE VIDEO.mp4';
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-
-      setMessage('Video processed and downloaded successfully!');
+      if(response.status==200){
+        console.log(response);
+        
+        const videoBlob = new Blob([response.data], { type: 'video/mp4' });
+        const videoUrl = window.URL.createObjectURL(videoBlob);
+  
+        const link = document.createElement('a');
+        link.href = videoUrl;
+        link.download = 'IN-STORE VIDEO.mp4';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+  
+        setMessage('Video processed and downloaded successfully!');
+      }
     } catch (error) {
       console.error('Error processing video:', error);
       setMessage('Failed to process video');
