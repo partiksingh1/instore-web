@@ -14,6 +14,7 @@ interface Video {
 
 const InstoreVideo = () => {
   const [logo, setLogo] = useState<File | null>(null);
+  const [email, setEmail] = useState<string>('');
   const [selectedVideo, setSelectedVideo] = useState<string>('');
   const [message, setMessage] = useState<string>('');
   const [videos, setVideos] = useState<Video[]>([]);
@@ -53,6 +54,7 @@ const InstoreVideo = () => {
     const formData = new FormData();
     formData.append('logoFile', logo);
     formData.append('videoUrl', selectedVideo);
+    formData.append('email', email);
 
     try {
       const response = await axios.post(
@@ -170,7 +172,22 @@ const InstoreVideo = () => {
               </div>
 
               <div>
-                <label className="block mb-2 text-2xl font-extrabold text-center">2. PREPARE AND UPLOAD YOUR LOGO</label>
+                <label className="block mb-2 text-2xl font-extrabold text-center">2. ENTER YOUR EMAIL</label>
+                <p className="text-lg leading-8 text-black mb-4 font-semibold text-center">
+                  Please provide your email address to receive a link to download your processed video.
+                </p>
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-50"
+                  placeholder="Enter your email"
+                />
+              </div>
+
+              <div>
+                <label className="block mb-2 text-2xl font-extrabold text-center">3. PREPARE AND UPLOAD YOUR LOGO</label>
 
                 <p className="text-lg leading-8 text-black mb-4 font-semibold text-center">
                   We recommend using a PNG file with a transparent background for the best results.
@@ -234,7 +251,7 @@ const InstoreVideo = () => {
               </div>
 
               <div>
-                <label className="block mb-2 text-2xl font-extrabold text-center">3. PROCESS VIDEO</label>
+                <label className="block mb-2 text-2xl font-extrabold text-center">4. PROCESS VIDEO</label>
 
                 <p className="text-lg leading-8 text-black mb-4 font-semibold">
                 - Now click the PROCESS VIDEO to begin video production. Your logo will feature on the entire video from start to finish. <br />
