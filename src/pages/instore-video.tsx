@@ -42,6 +42,11 @@ const InstoreVideo = () => {
 
   const handleProcessVideo = async (event: React.FormEvent) => {
     event.preventDefault();
+    const token = localStorage.getItem('authToken');
+    if (!token) {
+      alert("Please Login/Register to continue!")
+      return;
+    }
 
     if (!logo || !selectedVideo) {
       setMessage('Please upload a logo and select a video');
