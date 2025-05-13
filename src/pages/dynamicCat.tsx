@@ -77,7 +77,7 @@ const Phones = () => {
           </div>
         </div>
         <div className="flex justify-center mb-10">
-        <AdsSection numOfAds={6} position="homepage"/>
+        <AdsSection numOfAds={6} position="categories"/>
         </div>
       </div>
     </PhonesLayout>

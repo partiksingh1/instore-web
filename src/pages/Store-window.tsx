@@ -45,7 +45,7 @@ const StoreWindow = () => {
             className="w-32 md:w-3/4 h-auto"
           />
         </div>
-        <div className="m-20 p-20 -mt-14">
+        <div className="m-30 p-20 -mt-14">
               <SpotlightSection />
             </div>
         <div className="flex justify-center mb-10">

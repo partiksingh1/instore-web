@@ -160,6 +160,7 @@ const AdminAds = () => {
   >
     <option value="homepage">Homepage</option>
     <option value="homepage-top-banner">Homepage Top Banner</option>
+    <option value="categories">Category page</option>
   </select>
 </div>
 

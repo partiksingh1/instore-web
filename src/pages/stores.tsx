@@ -7,14 +7,9 @@ import Socials from "@/components/Socials";
 
 const Stores = () => {
   const categories = [
-    "PHONES",
-    "PC",
-    "TECH",
-    "AUDIO",
-    "VIDEO GAMES",
-    "TCG",
-    "MERCHANDISE",
-    "SPARES & REPAIRS"
+    "PHONES & ACCESSORIES",
+    "PC - TECH - AUDIO",
+    "VIDEO GAMES - TCG - MERCH",
   ];
 
   const navigate = useNavigate();
@@ -63,7 +58,7 @@ const Stores = () => {
         </div>
 
           {/* Heading */}
-          <h1 className="relative text-5xl md:text-5xl font-bold mt-4 text-center">STORES</h1>
+          <h1 className="relative text-5xl md:text-5xl font-bold my-3 text-center">STORES</h1>
 
           {/* Layout for Categories with Background Image */}
           <div className="relative w-full max-w-8xl mb-12">
