@@ -11,10 +11,11 @@ const StylizedNav: React.FC = () => {
     { label: "STORES", path: "/stores" },
     { label: "WHOLESALERS & DISTRIBUTORS", path: "/WandD" },
     { label: "STORE WINDOW", path: "/store-window" },
-    { label: "DEMO DAYS", path: "/demo-days" },
+    // { label: "DEMO DAYS", path: "/demo-days" },
+    { label: "IN-STORE SUPPORT", path: "/instore-support" },
     { label: "IN-STORE VIDEO", path: "/instore-video" },
-    { label: "POSTERS", path: "/posters" },
-    { label: "PODCAST", path: "/podcast" },
+    // { label: "POSTERS", path: "/posters" },
+    // { label: "PODCAST", path: "/podcast" },
     { label: "ABOUT US", path: "/aboutus" },
     { label: "WORK WITH US", path: "/work-with-us" },
     { label: "CONTACT", path: "/contact" },
@@ -22,7 +23,7 @@ const StylizedNav: React.FC = () => {
     { label: "MEMBERS LOG-IN", path: "/login" },
   ]);
 
-  const [dynamicItems, setDynamicItems] = useState<{ label: string; path: string }[]>([]);
+  const [,setDynamicItems] = useState<{ label: string; path: string }[]>([]);
   const [hoveredItem, setHoveredItem] = useState<number | null>(null);
   const navigate = useNavigate();
   const location = useLocation();  // Get the current location (path)
@@ -55,7 +56,7 @@ const StylizedNav: React.FC = () => {
     <nav className="p-2">
       <div className="flex flex-wrap justify-center gap-2">
         {/* Render static items */}
-        {[...navItems.slice(0, 3), ...dynamicItems, ...navItems.slice(3)].map((item, index) => (
+        {navItems.map((item, index) => (
           <motion.div
             key={item.path}
             onHoverStart={() => setHoveredItem(index)}
