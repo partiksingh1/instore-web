@@ -43,7 +43,7 @@ const Magazine: React.FC = () => {
 
 {/* Embed Paperturn Flipbook */}
 <iframe
-  src="https://sfddsf.paperturn-view.com/?pid=ODg8876194&bgcolor=transparent&embed=iframe&shadow=1&flipSound=1&hardCover=1"
+  src="https://asdfg.paperturn-view.com/?pid=ODg8885563&bgcolor=transparent&embed=iframe&shadow=1&flipSound=1&hardCover=1"
   width="100%"
   height="auto"
   allowFullScreen

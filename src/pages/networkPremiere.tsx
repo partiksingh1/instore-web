@@ -46,6 +46,18 @@ const NetworkPremiere = () => {
                     />
                 </div>
                 <h1 className="text-5xl md:text-5xl font-bold mt-4 text-center">NETWORK PREMIERE</h1>
+                <div className="flex w-1/2 justify-center">
+                    <img
+                        src="/premiereLogo.png"
+                        alt="Latest"
+                        className="w-32 md:w-3/4 h-auto m-5 border-black border-2"
+                    />
+                    <img
+                        src="/premiereLogo.png"
+                        alt="Latest"
+                        className="w-32 md:w-3/4 h-auto m-5 border-black border-2"
+                    />
+                </div>
 
                 <div className="flex">
                     <div className="h-full w-full">
