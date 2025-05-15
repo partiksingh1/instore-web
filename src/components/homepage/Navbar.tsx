@@ -14,6 +14,7 @@ const StylizedNav: React.FC = () => {
     // { label: "DEMO DAYS", path: "/demo-days" },
     { label: "IN-STORE SUPPORT", path: "/instore-support" },
     { label: "IN-STORE VIDEO", path: "/instore-video" },
+    { label: "NETWORK PREMIERE", path: "/networkPremiere" },
     // { label: "POSTERS", path: "/posters" },
     // { label: "PODCAST", path: "/podcast" },
     { label: "ABOUT US", path: "/aboutus" },

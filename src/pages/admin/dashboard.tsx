@@ -81,6 +81,12 @@ const AdminDashboard: React.FC = () => {
         >
           Manage Scrollbar
         </button>
+        <button
+          className="bg-indigo-600 text-white text-lg font-medium py-4 shadow-md hover:bg-indigo-700 focus:outline-none transition duration-200"
+          onClick={() => navigateTo('/admin/premiere')}
+        >
+          Manage Premiere
+        </button>
       </div>
     </div>
   );

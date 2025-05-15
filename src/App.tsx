@@ -36,6 +36,8 @@ import NewsletterPage from './pages/latestPage';
 import StoreWindow from './pages/Store-window';
 import ScrollBarPage from './pages/admin/AdminScrollBar';
 import DownloadCSV from './pages/admin/AdminNewsletter';
+import NetworkPremiere from './pages/networkPremiere';
+import AdminPremiere from './pages/admin/AdminPremiere';
 
 
 const App: React.FC = () => {
@@ -61,6 +63,7 @@ const App: React.FC = () => {
         <Route path="/podcast" element={<Podcast />} />
         <Route path="/register" element={<Register />} />
         <Route path="/stores" element={<Stores />} />
+        <Route path="/networkPremiere" element={<NetworkPremiere />} />
         <Route path="/login" element={<Login />} />
         <Route path="/WandD" element={<WandD />} />
         <Route path="/work-with-us" element={<WorkWithUs />} />
@@ -77,6 +80,7 @@ const App: React.FC = () => {
         <Route path="/admin/store-window" element={<AdminStoreWindow/>} />
         <Route path="/admin/newsletter" element={<DownloadCSV/>} />
         <Route path="/admin/scrollbar" element={<ScrollBarPage/>} />
+        <Route path="/admin/premiere" element={<AdminPremiere/>} />
       </Routes>
     </Router>
   );

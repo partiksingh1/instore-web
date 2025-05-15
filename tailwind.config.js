@@ -6,6 +6,8 @@ export default {
   	extend: {
 			  fontFamily: {
 				KG: ['Roboto Condensed', 'serif'],
+				sans: ['Inter', 'sans-serif'],
+				poppins: ['Poppins', 'sans-serif'],
 			  },
   		borderRadius: {
   			lg: 'var(--radius)',
